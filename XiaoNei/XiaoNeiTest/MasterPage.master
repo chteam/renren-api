@@ -1,0 +1,45 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+    <div style="width:69%;float:right">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+        <div style="width:30%;float:left">
+        
+    		<a href="/Users/getInfo.aspx?<%=this.Api.QueryData %>">Users.getInfo</a><br />
+ <a href="/Users/getLoggedInUser.aspx?<%=this.Api.QueryData %>">Users.getLoggedInUser</a><br />
+			<a href="/Users/isAppAdded.aspx?<%=this.Api.QueryData %>">Users.isAppAdded</a><br />
+			<hr />
+			<a href="/Profile/getXNML.aspx?<%=this.Api.QueryData %>">Profile.getXNML</a><br />
+			<a href="/Profile/setXNML.aspx?<%=this.Api.QueryData %>">Profile.setXNML</a><br />
+			<hr />
+			<a href="/Friends/get.aspx?<%=this.Api.QueryData %>">Friends.get</a><br />
+			<a href="/Friends/getFriends.aspx?<%=this.Api.QueryData %>">Friends.getFriends</a><br />
+			<a href="/Friends/areFriends.aspx?<%=this.Api.QueryData %>">Friends.areFriends</a><br />
+			<a href="/Friends/getAppUsers.aspx?<%=this.Api.QueryData %>">Friends.getAppUsers</a><br />
+			<hr />
+			<a href="/Feed/publishTemplatizedAction.aspx?<%=this.Api.QueryData %>">Feed.publishTemplatizedAction
+			</a>
+			<br />
+			<a href="/Notifications/send.aspx?<%=this.Api.QueryData %>">Notifications.send</a>
+			
+			<br />
+			<hr />
+			<a
+				href="/Invitations/getOsInfo.aspx?<%=this.Api.QueryData %>">Invitations.getOsInfo</a>
+			</div>
+    </form>
+</body>
+</html>
