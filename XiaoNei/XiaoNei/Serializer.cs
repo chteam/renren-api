@@ -14,11 +14,15 @@ namespace XiaoNei {
 		/// <typeparam name="T">反序列化的目标类型</typeparam>
 		/// <param name="str">XML字符串</param>
 		/// <returns></returns>
-		static public T Load<T>(string str)  {
-			XmlSerializer ms = new XmlSerializer(typeof(T), "http://api.xiaonei.com/1.0/");
-			XmlReader xr = XmlReader.Create(new StringReader(str));
-			//xr.NamespaceURI = "http://api.xiaonei.com/1.0/";
-			return (T)(ms.Deserialize(xr));
+		static public T Load<T>(string str) {
+			try {
+				XmlSerializer ms = new XmlSerializer(typeof(T), "http://api.xiaonei.com/1.0/");
+				XmlReader xr = XmlReader.Create(new StringReader(str));
+				//xr.NamespaceURI = "http://api.xiaonei.com/1.0/";
+				return (T)(ms.Deserialize(xr));
+			} catch {
+				throw new Exception("错误的响应值");
+			}
 		}
 		public static string Save<T>(T obj) {
 			XmlSerializer ms = new XmlSerializer(typeof(T), "http://api.xiaonei.com/1.0/");
