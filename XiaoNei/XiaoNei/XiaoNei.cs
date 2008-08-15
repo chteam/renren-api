@@ -2,11 +2,13 @@
 using System.Text;
 using System.Web;
 using XiaoNei.Api.Property;
+using System.Collections.Generic;
 
 namespace XiaoNei {
 	public class XiaoNeiApi {
 
 		public XiaoNeiApi(string apikey, string secret) {
+			Cache = new Dictionary<string, string>();
 			ApiKey = apikey;
 			Secret = secret;
 			PostData = string.Format("api_key={0}&session_key={1}&v={2}&call_id=.&sig=.&", ApiKey, Secret, Version);
@@ -31,14 +33,20 @@ namespace XiaoNei {
 			}
 		}
 		#endregion
-		public string Proc(string method, string param,string format) {
-			HttpProc proc = new HttpProc(ApiUrl);
-			proc.strPostdata = string.Format("{0}method={1}&format={3}&{2}", PostData, method, param, format);
-			proc.encoding = Encoding.UTF8;
-			string ret = proc.Proc();
-			if (ret.Contains("error_response"))
+		Dictionary<string, string> Cache { get; set; }
+		public string Proc(string method, string param, string format) {
+			string key = string.Format("{0}{1}{2}", method, param, format);
+			if (!this.Cache.ContainsKey(key)) {
+
+				HttpProc proc = new HttpProc(ApiUrl);
+				proc.strPostdata = string.Format("{0}method={1}&format={3}&{2}", PostData, method, param, format);
+				proc.encoding = Encoding.UTF8;
+				string ret = proc.Proc();
+				Cache.Add(key, ret);
+			}
+			if (Cache[key].Contains("error_response"))
 				throw new Exception("Api调用返回错误");
-			return ret;
+			return Cache[key];
 		}
 		#region XiaoNeiApi
 		Users _users =null;
