@@ -10,6 +10,6 @@ public partial class Notifications_send : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		Api.Notifications.send(TextBox1.Text, TextBox2.Text);
+		Api.Notifications.Send(TextBox1.Text, TextBox2.Text);
 	}
 }

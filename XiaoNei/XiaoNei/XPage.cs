@@ -5,7 +5,7 @@ public class XPage : System.Web.UI.Page, IXHandler {
 	public XiaoNeiApi Api { get; set; }
 	public String UserID {
 		get {
-			return Api.Users.getLoggedInUser();
+			return Api.Users.GetLoggedInUser();
 		}
 	}
 	protected override void OnInit(EventArgs e) {

@@ -11,7 +11,7 @@ public partial class Friends_areFriends : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		fis = Api.Friends.areFriends(TextBox1.Text, TextBox2.Text);
+		fis = Api.Friends.AreFriends(TextBox1.Text, TextBox2.Text);
 	}
 	public List<FriendInfo> fis { get; set; }
 }

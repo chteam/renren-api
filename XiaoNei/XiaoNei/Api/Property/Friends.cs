@@ -13,7 +13,7 @@ namespace XiaoNei.Api.Property {
 		/// </summary>
 		/// <param name="format"></param>
 		/// <returns></returns>
-		public int[] get(string format) {
+		public int[] Get(string format) {
 			string xml = Api.Proc("xiaonei.friends.get"
 				, ""
 				, format
@@ -24,8 +24,8 @@ namespace XiaoNei.Api.Property {
 		/// 得到当前登录用户的好友列表，得到的只是含有好友uid的列表。
 		/// </summary>
 		/// <returns></returns>
-		public int[] get() {
-			return get("XML");
+		public int[] Get() {
+			return Get("XML");
 		}
 		#endregion
 		#region getFriends
@@ -34,7 +34,7 @@ namespace XiaoNei.Api.Property {
 		/// </summary>
 		/// <param name="format"></param>
 		/// <returns></returns>
-		public List<Friend> getFriends(string format) {
+		public List<Friend> GetFriends(string format) {
 			string xml = Api.Proc("xiaonei.friends.getFriends"
 				, ""
 				, format
@@ -45,8 +45,8 @@ namespace XiaoNei.Api.Property {
 		/// 得到当前登录用户的好友列表
 		/// </summary>
 		/// <returns></returns>
-		public List<Friend> getFriends() {
-			return getFriends("XML");
+		public List<Friend> GetFriends() {
+			return GetFriends("XML");
 		}
 		#endregion
 		#region areFriends
@@ -57,7 +57,7 @@ namespace XiaoNei.Api.Property {
 /// <param name="uid2"></param>
 /// <param name="format"></param>
 /// <returns></returns>
-		public List<FriendInfo> areFriends(string uids1, string uids2, string format) {
+		public List<FriendInfo> AreFriends(string uids1, string uids2, string format) {
 			string xml = Api.Proc("xiaonei.friends.areFriends"
 				, string.Format("uids1={0}&uids2={1}", uids1.Trim(), uids2.Trim())
 				, format
@@ -70,12 +70,12 @@ namespace XiaoNei.Api.Property {
 		/// <param name="uid1"></param>
 		/// <param name="uid2"></param>
 		/// <returns></returns>
-		public List<FriendInfo> areFriends(string uids1, string uids2) {
-			return areFriends(uids1, uids2, "XML");
+		public List<FriendInfo> AreFriends(string uids1, string uids2) {
+			return AreFriends(uids1, uids2, "XML");
 		}
 		#endregion
 		#region getAppUsers
-		public int[] getAppUsers(string format) {
+		public int[] GetAppUsers(string format) {
 			string xml = Api.Proc("xiaonei.friends.getAppUsers"
 				, ""
 				, format
@@ -83,8 +83,8 @@ namespace XiaoNei.Api.Property {
 			return Serializer.Load<GetAppUsersContainer>(xml).UIDs;
 		}
 
-		public int[] getAppUsers() {
-			return getAppUsers("XML");
+		public int[] GetAppUsers() {
+			return GetAppUsers("XML");
 		}
 		#endregion
 	}

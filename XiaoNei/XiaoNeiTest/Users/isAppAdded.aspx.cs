@@ -11,7 +11,7 @@ public partial class Users_isAppAdded : XPage {
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
 		Literal1.Text = "否";
-		if (Api.Users.isAppAdded(TextBox1.Text)) {
+		if (Api.Users.IsAppAdded(TextBox1.Text)) {
 			Literal1.Text = "是";
 		}
 	}

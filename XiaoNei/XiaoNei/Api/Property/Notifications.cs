@@ -20,7 +20,7 @@ namespace XiaoNei.Api.Property {
 		///例如：hello,<xn:name uid="200032219" linked="true"/> ，去看看这部电影<a href="http://www.tudou.com/programs/view/Tzpw9PIj8zM/">狮子王</a>
 		/// </param>
 		/// <param name="format"></param>
-		public void send(string to_ids, string notification, string format) {
+		public void Send(string to_ids, string notification, string format) {
 			string xml = Api.Proc("xiaonei.notifications.send"
 						, string.Format("to_ids={0}&notification={1}"
 										, to_ids
@@ -29,8 +29,8 @@ namespace XiaoNei.Api.Property {
 						);
 			Serializer.Load<SendContainer>(xml);
 		}
-		public void send(string to_ids, string notification) {
-			send(to_ids, notification, "XML");
+		public void Send(string to_ids, string notification) {
+			Send(to_ids, notification, "XML");
 		}
 	}
 }

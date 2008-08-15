@@ -10,6 +10,6 @@ public partial class Invitations_getOsInfo : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		Api.Invitations.getOsInfo(TextBox1.Text, "Xml");
+		Api.Invitations.GetOsInfo(TextBox1.Text, "Xml");
 	}
 }

@@ -15,7 +15,7 @@ namespace XiaoNei.Api.Property {
 		/// <param name="resource_id"> 	比如：发表Blog时要分发Feed，则此参数可以传入此Blog的id。此参数在展示Feed时会用到，用于去掉重复的Feed。缺省值是 0 </param>
 		/// <param name="format">Response的格式。请指定为  XML  （缺省值），或  JSON</param>
 		/// <returns></returns>
-		public bool publishTemplatizedAction(int template_id, string title_data, string body_data, int resource_id, string format) {
+		public bool PublishTemplatizedAction(int template_id, string title_data, string body_data, int resource_id, string format) {
 			string xml = Api.Proc("xiaonei.feed.publishTemplatizedAction"
 			, string.Format("template_id={0}&title_data={1}&body_data={2}&resource_id={3}"
 							, template_id
@@ -36,8 +36,8 @@ namespace XiaoNei.Api.Property {
 		///此项也支持XNML语法，目前仅支持<xn:name>和<a>标签</param>
 		/// <param name="body_data">此项为JSON格式的数组，规则同title_data项</param>
 		/// <returns></returns>
-		public bool publishTemplatizedAction(int template_id, string title_data, string body_data) {
-			return publishTemplatizedAction(template_id, title_data, body_data, 0, "XML");
+		public bool PublishTemplatizedAction(int template_id, string title_data, string body_data) {
+			return PublishTemplatizedAction(template_id, title_data, body_data, 0, "XML");
 		}
 	}
 }

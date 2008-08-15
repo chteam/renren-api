@@ -8,15 +8,15 @@ namespace XiaoNei.Api.Property {
 	public class Invitations : ApiBase {
 		public Invitations(XiaoNeiApi api) : base(api) { }
 
-		public List<InvitationInfo> getOsInfo(string invite_ids, string format) {
-			string xml = Api.Proc("xiaonei.invitations.getOutsite "
+		public List<InvitationInfo> GetOsInfo(string invite_ids, string format) {
+			string xml = Api.Proc("xiaonei.invitations.getOutsite"
 			, string.Format("invite_ids={0}",invite_ids)
 			, format
 			);
 			return Serializer.Load<GetOsInfoContainer>(xml).InvitationInfos;
 		}
-		public List<InvitationInfo> getOsInfo(string invite_ids) {
-			return getOsInfo(invite_ids, "XML");
+		public List<InvitationInfo> GetOsInfo(string invite_ids) {
+			return GetOsInfo(invite_ids, "XML");
 		}
 	}
 }

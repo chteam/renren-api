@@ -10,6 +10,6 @@ public partial class Feed_publishTemplatizedAction : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		Literal1.Text = Api.Feed.publishTemplatizedAction(1, TextBox1.Text, TextBox2.Text).ToString();
+		Literal1.Text = Api.Feed.PublishTemplatizedAction(1, TextBox1.Text, TextBox2.Text).ToString();
 	}
 }

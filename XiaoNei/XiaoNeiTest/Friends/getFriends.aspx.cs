@@ -11,7 +11,7 @@ public partial class Friends_getFriends : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		fs = Api.Friends.getFriends();
+		fs = Api.Friends.GetFriends();
 	}
 	public List<Friend> fs { get; set; }
 }

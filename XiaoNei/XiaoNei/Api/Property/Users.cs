@@ -11,29 +11,29 @@ namespace XiaoNei.Api.Property {
 		/// <summary>
 		/// 得到用户信息，当对方设置了隐私权限，只能返回 name、sex、headurl等数据
 		/// </summary>
-		public UserContainer getInfo(string uid, string fields, string format) {
+		public UserContainer GetInfo(string uid, string fields, string format) {
 			string xml=Api.Proc("xiaonei.users.getInfo"
 				,string.Format("uids={0}&fields={1}", uid.Trim(), fields.Trim())
 				, format
 				);
 			return Serializer.Load<UserContainer>(xml);
 		}
-		public UserContainer getInfo(string[] uid, string[] fields, string format) {
-			return getInfo(string.Join(",", uid), string.Join(",", fields), format);
+		public UserContainer GetInfo(string[] uid, string[] fields, string format) {
+			return GetInfo(string.Join(",", uid), string.Join(",", fields), format);
 		}
-		public UserContainer getInfo(string[] uid, string[] fields) {
-			return getInfo(string.Join(",", uid), string.Join(",", fields));
+		public UserContainer GetInfo(string[] uid, string[] fields) {
+			return GetInfo(string.Join(",", uid), string.Join(",", fields));
 		}
-		public UserContainer getInfo(string  uid, string  fields) {
-			return getInfo(uid, fields, "");
+		public UserContainer GetInfo(string  uid, string  fields) {
+			return GetInfo(uid, fields, "");
 		}
-		public UserContainer getInfo(string uid) {
-			return getInfo(uid
+		public UserContainer GetInfo(string uid) {
+			return GetInfo(uid
 				, "name,sex,birthday,tinyurl,headurl,mainurl,hometown_location,work_history,university_history,hs_history,contact_info,books,movies,music"
 , "");
 		}
-		public UserContainer getInfo(string[] uid) {
-			return getInfo(string.Join(",", uid));
+		public UserContainer GetInfo(string[] uid) {
+			return GetInfo(string.Join(",", uid));
 		}
 		#endregion
 		#region getLoggedInUser
@@ -41,7 +41,7 @@ namespace XiaoNei.Api.Property {
 		/// 得到当前session的用户ID
 		/// </summary>
 		/// <returns></returns>
-		public string getLoggedInUser(string format) {
+		public string GetLoggedInUser(string format) {
 			string xml = Api.Proc("xiaonei.users.getLoggedInUser"
 			, string.Empty
 			, format
@@ -50,8 +50,8 @@ namespace XiaoNei.Api.Property {
 				HttpContext.Current.Session["xiaonei.users.uid"] = Serializer.Load<LoggedInUser>(xml).UID;
 			return HttpContext.Current.Session["xiaonei.users.uid"].ToString();
 		}
-		public string getLoggedInUser() {
-			return getLoggedInUser("XML");
+		public string GetLoggedInUser() {
+			return GetLoggedInUser("XML");
 		}
 		#endregion
 
@@ -62,18 +62,18 @@ namespace XiaoNei.Api.Property {
 		/// </summary>
 		/// <param name="uid"></param>
 		/// <returns></returns>
-		public bool isAppAdded(string uid, string format) {
+		public bool IsAppAdded(string uid, string format) {
 			string xml = Api.Proc("xiaonei.users.isAppAdded"
 				, string.Format("uid={0}", uid.Trim())
 				, format
 				);
 			return Serializer.Load<IsAppAdded>(xml).Val == 1;
 		}
-		public bool isAppAdded(string uid) {
-			return isAppAdded(uid,"XML");
+		public bool IsAppAdded(string uid) {
+			return IsAppAdded(uid,"XML");
 		}
 		public bool isAppAdded() {
-			return isAppAdded("", "XML");
+			return IsAppAdded("", "XML");
 		}
 		#endregion
 	}

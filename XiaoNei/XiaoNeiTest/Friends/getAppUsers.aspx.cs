@@ -10,7 +10,7 @@ public partial class Friends_getAppUsers : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		uis = Api.Friends.getAppUsers();
+		uis = Api.Friends.GetAppUsers();
 	}
 	protected int[] uis { set; get; }
 }
