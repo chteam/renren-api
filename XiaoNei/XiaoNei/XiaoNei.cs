@@ -7,13 +7,15 @@ using System.Collections.Generic;
 namespace XiaoNei {
 	public class XiaoNeiApi {
 
-		public XiaoNeiApi(string apikey, string secret) {
+		public XiaoNeiApi(string apikey, string secret,IXHandler handler) {
 			Cache = new Dictionary<string, string>();
 			ApiKey = apikey;
 			Secret = secret;
+			Handler = handler;
 			PostData = string.Format("api_key={0}&session_key={1}&v={2}&call_id=.&sig=.&", ApiKey, Secret, Version);
 		}
-	
+		public IXHandler Handler { get; set; }
+
 		public string Version = "1.0";
 		public string ApiKey { get; set; }
 		public string Secret { get; set; }
@@ -102,10 +104,11 @@ namespace XiaoNei {
 		#region init 
 		public static void Init(IXHandler ih) {
 			try {
+				ih.IsDebug = false;
 				string secret = HttpContext.Current.Request.QueryString["xn_sig_session_key"].ToString();
 				secret = HttpContext.Current.Server.UrlEncode(secret);
 				string apiKey = HttpContext.Current.Request.QueryString["xn_sig_api_key"];
-				ih.Api = new XiaoNeiApi(apiKey, secret);
+				ih.Api = new XiaoNeiApi(apiKey, secret, ih);
 			} catch {
 				HttpContext.Current.Response.Write("本程序为校内网应用程序，请登录后再使用");
 				HttpContext.Current.Response.End();

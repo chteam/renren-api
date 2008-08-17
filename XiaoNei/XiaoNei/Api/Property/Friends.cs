@@ -18,7 +18,7 @@ namespace XiaoNei.Api.Property {
 				, ""
 				, format
 				);
-			return Serializer.Load<GetContainer>(xml).UIDs;
+			return Api.Load<GetContainer>(xml).UIDs;
 		}
 		/// <summary>
 		/// 得到当前登录用户的好友列表，得到的只是含有好友uid的列表。
@@ -39,7 +39,7 @@ namespace XiaoNei.Api.Property {
 				, ""
 				, format
 				);
-			return Serializer.Load<GetFriendsContainer>(xml).Friends;
+			return Api.Load<GetFriendsContainer>(xml).Friends;
 		}
 		/// <summary>
 		/// 得到当前登录用户的好友列表
@@ -62,7 +62,7 @@ namespace XiaoNei.Api.Property {
 				, string.Format("uids1={0}&uids2={1}", uids1.Trim(), uids2.Trim())
 				, format
 				);
-			return Serializer.Load<areFriendsContainer>(xml).FriendInfos;
+			return Api.Load<areFriendsContainer>(xml).FriendInfos;
 		}
 		/// <summary>
 		/// 判断两组用户是否互为好友关系，比较的两组用户数必须相等
@@ -80,7 +80,7 @@ namespace XiaoNei.Api.Property {
 				, ""
 				, format
 				);
-			return Serializer.Load<GetAppUsersContainer>(xml).UIDs;
+			return Api.Load<GetAppUsersContainer>(xml).UIDs;
 		}
 
 		public int[] GetAppUsers() {

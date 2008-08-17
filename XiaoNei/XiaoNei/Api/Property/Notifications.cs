@@ -27,7 +27,7 @@ namespace XiaoNei.Api.Property {
 										, notification)
 						, format
 						);
-			Serializer.Load<SendContainer>(xml);
+			Api.Load<SendContainer>(xml);
 		}
 		public void Send(string to_ids, string notification) {
 			Send(to_ids, notification, "XML");

@@ -16,7 +16,7 @@ namespace XiaoNei.Api.Property {
 				,string.Format("uids={0}&fields={1}", uid.Trim(), fields.Trim())
 				, format
 				);
-			return Serializer.Load<UserContainer>(xml);
+			return Api.Load<UserContainer>(xml);
 		}
 		public UserContainer GetInfo(string[] uid, string[] fields, string format) {
 			return GetInfo(string.Join(",", uid), string.Join(",", fields), format);
@@ -48,7 +48,7 @@ namespace XiaoNei.Api.Property {
 				, format
 				);
 
-				HttpContext.Current.Session["xiaonei.users.uid"] = Serializer.Load<LoggedInUser>(xml).UID;
+				HttpContext.Current.Session["xiaonei.users.uid"] = Api.Load<LoggedInUser>(xml).UID;
 			}
 			return HttpContext.Current.Session["xiaonei.users.uid"].ToString();
 		}
@@ -69,7 +69,7 @@ namespace XiaoNei.Api.Property {
 				, string.Format("uid={0}", uid.Trim())
 				, format
 				);
-			return Serializer.Load<IsAppAdded>(xml).Val == 1;
+			return Api.Load<IsAppAdded>(xml).Val == 1;
 		}
 		public bool IsAppAdded(string uid) {
 			return IsAppAdded(uid,"XML");

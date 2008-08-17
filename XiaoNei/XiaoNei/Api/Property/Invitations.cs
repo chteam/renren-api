@@ -13,7 +13,7 @@ namespace XiaoNei.Api.Property {
 			, string.Format("invite_ids={0}",invite_ids)
 			, format
 			);
-			return Serializer.Load<GetOsInfoContainer>(xml).InvitationInfos;
+			return Api.Load<GetOsInfoContainer>(xml).InvitationInfos;
 		}
 		public List<InvitationInfo> GetOsInfo(string invite_ids) {
 			return GetOsInfo(invite_ids, "XML");

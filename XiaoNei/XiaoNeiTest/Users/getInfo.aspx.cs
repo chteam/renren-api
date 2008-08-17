@@ -13,6 +13,6 @@ public partial class Users_getInfo : XPage {
 	public IEnumerable<User> UserList { get; set; }
 	protected void Button1_Click(object sender, EventArgs e) {
 		UserContainer uc = Api.Users.GetInfo(TextBox1.Text, TextBox2.Text, DropDownList1.Text);
-		Literal1.Text = Serializer.Save<UserContainer>(uc);
+		Literal1.Text = Api.Save<UserContainer>(uc);
 	}
 }

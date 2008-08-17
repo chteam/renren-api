@@ -24,7 +24,7 @@ namespace XiaoNei.Api.Property {
 							, resource_id)
 			, format
 			);
-			return Serializer.Load<PublishTemplatizedActionContainer>(xml).IsSuccess;
+			return Api.Load<PublishTemplatizedActionContainer>(xml).IsSuccess;
 		}
 		/// <summary>
 		/// 给当前登录者的好友且安装了同样应用的用户发新鲜事。

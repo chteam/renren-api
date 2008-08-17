@@ -13,7 +13,7 @@ namespace XiaoNei.Api.Property {
 				, string.Format("uid={0}", uid.Trim())
 				, format 
 				);
-			return Serializer.Load<GetXNML>(xml).Val;
+			return Api.Load<GetXNML>(xml).Val;
 		}
 		public int SetXNML(string uid, string profile, string profile_action, string format) {
 			string xml = Api.Proc("xiaonei.profile.setXNML"
@@ -23,7 +23,7 @@ namespace XiaoNei.Api.Property {
 								)
 				, format
 				);
-			return Serializer.Load<SetXNML>(xml).Val;
+			return Api.Load<SetXNML>(xml).Val;
 		}
 	}
 }
