@@ -13,7 +13,6 @@ namespace XiaoNei {
 			}
 		}
 		protected override void OnInit(EventArgs e) {
-			this.IsDebug = false;
 			base.OnInit(e);
 			XiaoNeiApi.Init(this);
 		}

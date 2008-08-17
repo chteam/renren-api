@@ -10,7 +10,6 @@ public class XPage : System.Web.UI.Page, IXHandler {
 		}
 	}
 	protected override void OnInit(EventArgs e) {
-		this.IsDebug = false;
 		base.OnInit(e);
 		XiaoNeiApi.Init(this);
 	}
