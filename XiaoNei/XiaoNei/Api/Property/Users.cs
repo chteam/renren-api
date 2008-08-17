@@ -42,12 +42,14 @@ namespace XiaoNei.Api.Property {
 		/// </summary>
 		/// <returns></returns>
 		public string GetLoggedInUser(string format) {
-			string xml = Api.Proc("xiaonei.users.getLoggedInUser"
-			, string.Empty
-			, format
-			);
-			if (HttpContext.Current.Session["xiaonei.users.uid"] == null)
+			if (HttpContext.Current.Session["xiaonei.users.uid"] == null) {
+				string xml = Api.Proc("xiaonei.users.getLoggedInUser"
+				, string.Empty
+				, format
+				);
+
 				HttpContext.Current.Session["xiaonei.users.uid"] = Serializer.Load<LoggedInUser>(xml).UID;
+			}
 			return HttpContext.Current.Session["xiaonei.users.uid"].ToString();
 		}
 		public string GetLoggedInUser() {
