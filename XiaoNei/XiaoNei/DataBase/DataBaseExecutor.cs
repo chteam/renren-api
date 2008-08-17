@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data.Common;
 
 namespace XiaoNei {
-	public class DataBaseExecutor {
+	public class DataBaseExecutor:IDisposable {
 		IDataOpen DataOpen { get; set; }
 		public DataBaseExecutor(IDataOpen dataopen) {
 			this.DataOpen = dataopen;
@@ -74,6 +74,14 @@ namespace XiaoNei {
 		public DataTable GetTable(string name, params object[] args) {
 			return GetTable(name, Dictionary.CreateFromArgs(args));
 		}
+		#endregion
+
+		#region IDisposable 成员
+
+		public void Dispose() {
+			DataOpen.Dispose();
+		}
+
 		#endregion
 	}
 }

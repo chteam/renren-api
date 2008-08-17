@@ -27,7 +27,6 @@ namespace XiaoNei {
 
 		public void Close() {
 			this.Command.Parameters.Clear();
-			Command.Connection.Close();
 		}
 		public DbDataAdapter GetAdapter() {
 			return new SqlDataAdapter(_Command);
@@ -36,6 +35,14 @@ namespace XiaoNei {
 
 		public void AddWithValue(string key, object value) {
 			_Command.Parameters.AddWithValue(key, value);
+		}
+
+
+
+		public void Dispose() {
+			Command.Connection.Close();
+			Command.Dispose();
+			_Connection.Dispose();
 		}
 
 		#endregion

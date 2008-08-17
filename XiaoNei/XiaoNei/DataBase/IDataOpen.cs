@@ -12,5 +12,6 @@ namespace XiaoNei {
 		void Close();
 		DbDataAdapter GetAdapter();
 		void AddWithValue(string key,object value);
+		void Dispose();
 	}
 }
