@@ -23,7 +23,8 @@ namespace XiaoNei {
 			this.Command.Connection = _Connection;
 			this.Command.CommandType = type;
 			this.Command.CommandText = text;
-			this.Command.Connection.Open();
+			if (_Connection.State != ConnectionState.Open)
+				this.Command.Connection.Open();
 		}
 		void  IDataOpen.Open(string SQLtext) {
 			Open(CommandType.Text, SQLtext);
@@ -37,15 +38,12 @@ namespace XiaoNei {
 			//throw new Exception(Command.CommandText);
 			return new OleDbDataAdapter(_Command);
 		}
-
-
 		public void AddWithValue(string key, object value) {
 			_Command.Parameters.AddWithValue(key, value);
 		}
-
-
 		public void Dispose() {
-			Command.Connection.Close();
+			if (_Connection.State != ConnectionState.Closed)
+				Command.Connection.Close();
 			Command.Dispose();
 			_Connection.Dispose();
 		}

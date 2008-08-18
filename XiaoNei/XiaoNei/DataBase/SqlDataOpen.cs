@@ -19,7 +19,8 @@ namespace XiaoNei {
 			this.Command.Connection = _Connection;
 			this.Command.CommandType = type;
 			this.Command.CommandText = text.Trim();
-			this.Command.Connection.Open();
+			if (_Connection.State != ConnectionState.Open)
+				this.Command.Connection.Open();
 		}
 		void  IDataOpen.Open(string SQLtext) {
 			Open(CommandType.Text, SQLtext);
@@ -40,7 +41,8 @@ namespace XiaoNei {
 
 
 		public void Dispose() {
-			Command.Connection.Close();
+			if (_Connection.State != ConnectionState.Closed)
+				Command.Connection.Close();
 			Command.Dispose();
 			_Connection.Dispose();
 		}
