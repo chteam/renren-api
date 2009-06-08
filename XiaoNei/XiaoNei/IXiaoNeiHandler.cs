@@ -1,6 +1,6 @@
 ﻿
 namespace XiaoNei {
-	public interface IXHandler {
+	public interface IXiaoNeiHandler {
 		/// <summary>
 		/// 返回API实例
 		/// </summary>

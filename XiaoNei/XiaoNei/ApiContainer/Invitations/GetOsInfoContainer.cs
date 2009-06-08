@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace XiaoNei.ApiContainer.Invitations {
+namespace XiaoNei.ApiContainer {
 	[XmlRoot("invitations_getOsInfo_response", Namespace = "http://api.xiaonei.com/1.0/")]
 	public class GetOsInfoContainer {
 		[XmlElement("os_invitation_info", typeof(InvitationInfo))]

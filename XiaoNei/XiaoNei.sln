@@ -3,30 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XiaoNei", "XiaoNei\XiaoNei.csproj", "{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "XiaoNeiTest", "XiaoNeiTest", "{D1200C2B-D677-44AB-BE59-DD04459CB106}"
-	ProjectSection(WebsiteProperties) = preProject
-		SccProjectName = "SAK"
-		SccAuxPath = "SAK"
-		SccLocalPath = "SAK"
-		SccProvider = "SAK"
-		TargetFramework = "3.5"
-		ProjectReferences = "{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}|XiaoNeiLibrary.dll;"
-		Debug.AspNetCompiler.VirtualPath = "/XiaoNeiTest"
-		Debug.AspNetCompiler.PhysicalPath = "XiaoNeiTest\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\XiaoNeiTest\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/XiaoNeiTest"
-		Release.AspNetCompiler.PhysicalPath = "XiaoNeiTest\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\XiaoNeiTest\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "3619"
-		VWDVirtualPath = "/"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XiaoNei.Test", "XiaoNei.Test\XiaoNei.Test.csproj", "{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7174D482-57B6-49A4-94DB-7C99F4608EDA}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		XiaoNei.vsmdi = XiaoNei.vsmdi
 	EndProjectSection
 EndProject
 Global
@@ -38,11 +20,12 @@ Global
 		SccProjectUniqueName1 = XiaoNei\\XiaoNei.csproj
 		SccProjectName1 = XiaoNei
 		SccLocalPath1 = XiaoNei
-		SccWebProject2 = true
-		SccProjectUniqueName2 = XiaoNeiTest
-		SccLocalPath2 = .
-		SccProjectFilePathRelativizedFromConnection2 = XiaoNeiTest\\
-		SccProjectEnlistmentChoice2 = 2
+		SccProjectUniqueName2 = XiaoNei.Test\\XiaoNei.Test.csproj
+		SccProjectName2 = XiaoNei.Test
+		SccLocalPath2 = XiaoNei.Test
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = XiaoNei.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -63,16 +46,16 @@ Global
 		{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Release|.NET.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D1200C2B-D677-44AB-BE59-DD04459CB106}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Release|.NET.ActiveCfg = Release|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5DAC5066-B0AD-4E0B-9968-D26EF5FFC46B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

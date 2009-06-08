@@ -3,7 +3,7 @@
 namespace XiaoNei {
 	public class Friend {
 		[XmlElement("id")]
-		public string ID { get; set; }
+		public string Id { get; set; }
 		[XmlElement("name")]
 		public string Name { get; set; }
 		[XmlElement("headurl")]

@@ -15,7 +15,7 @@ namespace XiaoNei {
 		/// 入学年份
 		/// </summary>
 		[XmlElement("year")]
-		public int Year { get; set; }
+		public int SchoolYear { get; set; }
 		/// <summary>
 		/// 学院
 		/// </summary>

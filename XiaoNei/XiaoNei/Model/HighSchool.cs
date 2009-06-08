@@ -12,7 +12,7 @@ namespace XiaoNei {
 		/// 入学年份
 		/// </summary>
 		[XmlElement("grad_year")]
-		public int Year { get; set; }
+		public int SchoolYear { get; set; }
 	}
 }
 

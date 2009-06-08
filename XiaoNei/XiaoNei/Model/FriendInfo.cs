@@ -3,10 +3,10 @@
 namespace XiaoNei {
 	public class FriendInfo {
 		[XmlElement("uid1")]
-		public string ID1 { get; set; }
+		public string Id1 { get; set; }
 		[XmlElement("uid2")]
-		public string ID2 { get; set; }
+		public string Id2 { get; set; }
 		[XmlElement("are_friends")]
-		public bool areFriends { get; set; }
+		public bool AreFriends { get; set; }
 	}
 }

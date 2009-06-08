@@ -7,11 +7,11 @@ namespace XiaoNei {
 	[XmlRoot("user")]
 	public class User {
 		[XmlElement("uid")]
-		public string UID{get;set;}
+		public string UserId{get;set;}
 		[XmlElement("name")]
 		public string Name { get; set; }
 		[XmlElement("sex")]
-		public int Sex { set; get; }
+		public SexType Sex { set; get; }
 		[XmlElement("birthday")]
 		public DateTime Birthday { get; set; }
 		[XmlElement("tinyurl")]

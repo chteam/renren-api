@@ -48,7 +48,7 @@ namespace XiaoNei.Api.Property {
 				, format
 				);
 
-				HttpContext.Current.Session["xiaonei.users.uid"] = Api.Load<LoggedInUser>(xml).UID;
+				HttpContext.Current.Session["xiaonei.users.uid"] = Api.Load<LoggedInUser>(xml).UserId;
 			}
 			return HttpContext.Current.Session["xiaonei.users.uid"].ToString();
 		}

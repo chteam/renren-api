@@ -8,7 +8,7 @@ using System.Collections;
 namespace XiaoNei {
 	[XmlRoot("users_getLoggedInUser_response", Namespace = "http://api.xiaonei.com/1.0/")]
 	public class LoggedInUser {
-		[XmlText]
-		public String UID { get; set; }
+        [XmlElement("uid", typeof(string ))]
+		public String UserId { get; set; }
 	}
 }

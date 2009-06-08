@@ -8,7 +8,7 @@ namespace XiaoNei {
 		[XmlElement("description")]
 		public string Description { get; set; }
 		[XmlElement("start_date")]
-		public string StartDate { get; set; }
+		public string BeginDate { get; set; }
 		[XmlElement("end_date")]
 		public string EndDate { get; set; }
 	}
