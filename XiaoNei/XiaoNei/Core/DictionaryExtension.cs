@@ -43,5 +43,10 @@ namespace XiaoNei
             if (value.HasValue)
                 dict.Add(key, value.Value.ToString());
         }
+        public static void AddNullable(this IDictionary<string, string> dict, string key, long? value)
+        {
+            if (value.HasValue)
+                dict.Add(key, value.Value.ToString());
+        }
     }
 }

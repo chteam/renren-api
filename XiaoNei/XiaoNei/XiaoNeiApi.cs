@@ -2,7 +2,6 @@
 using System.Text;
 using System.Web;
 using XiaoNei.Api;
-using XiaoNei.Api.Property;
 using System.Collections.Generic;
 
 namespace XiaoNei
@@ -20,8 +19,9 @@ namespace XiaoNei
         //&xn_sig_api_key=7b4862666bad4eccb1f9053048b23428
         //&xn_sig_app_id=31802
         //&xn_sig_in_iframe=1
-        public XiaoNeiApi(string apiKey, string secret, string sessionKey, IXiaoNeiHandler handler)
+        public XiaoNeiApi(string apiKey, string secret, string sessionKey,IXiaoNeiHandler handler)
         {
+            //HttpContext = httpContext;
             Cache = new Dictionary<string, string>();
             ApiKey = new KeyValuePair<string, string>("api_key", apiKey);
             Secret = secret;
@@ -30,10 +30,10 @@ namespace XiaoNei
             Handler = handler;
             //PostData = string.Format("api_key={0}&session_key={1}&v={2}", ApiKey, Secret, Version);
         }
-        HttpContextBase HttpContext { get; set; }
+      // public  HttpContextBase HttpContext { get; set; }
 
+        public bool CanPay = false;
         public IXiaoNeiHandler Handler { get; set; }
-
         public KeyValuePair<string, string> Version { get; set; }
         public KeyValuePair<string, string> ApiKey { get; set; }
         public KeyValuePair<string, string> SessionKey { get; set; }
@@ -46,7 +46,7 @@ namespace XiaoNei
         {
             if (!Cache.ContainsKey(param))
             {
-                var proc = new HttpProc(ApiUrl) { strPostdata = param, encoding = Encoding.UTF8 };
+                var proc = new HttpProc(ApiUrl) { StrPostdata = param, Encoding = Encoding.UTF8 };
                 string ret = proc.Proc();
                 Cache.Add(param, ret);
             }

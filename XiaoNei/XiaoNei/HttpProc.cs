@@ -3,320 +3,245 @@
 * http协议操作模块：简化了 Get和Post请求。
 * 
 * */
-	using System;
-	using System.Net;
+using System;
+using System.IO;
+using System.Net;
+using System.Text;
 
-	/// <summary>
-	/// HttpProc 的摘要说明。
-	/// </summary>
-public class HttpProc {
-	/// <summary>
-	/// 创建请求
-	/// </summary>
-	/// <returns>请求对象</returns>
-	private HttpWebRequest CreateRequest() {
-		HttpWebRequest 请求 = null;
-
-		请求 = (HttpWebRequest)HttpWebRequest.Create(this._strUrl);//创建请求
-		请求.Accept = "*/*"; //接受任意文件
-		请求.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)"; // 模拟使用IE在浏览
-		//请求.AllowAutoRedirect = false;//这里不允许302
-		请求.CookieContainer = new CookieContainer();//cookie容器，
-		请求.Referer = this.strRefUrl; //当前页面的引用
-
-
-		//使用代理
-		//WebProxy myProxy = new WebProxy();
-		//if (config.Proxy_DEF != "0") {
-		//    //使用浏览器的代理
-		//    myProxy = (WebProxy)请求.Proxy;
-		//    //Console.WriteLine("\nThe actual default Proxy settings are {0}",myProxy.Address);
-
-		//} else {
-		//    //使用自定的代码
-		//    myProxy.Address = new Uri(String.Format("http://{0}:{1}", config.Proxy_Server, config.Proxy_Port));
-
-		//    myProxy.Credentials = new NetworkCredential(username, password);
-		//    if (config.Proxy_Username.Length > 0 & config.Proxy_Pass.Length > 0) {
-		//        myProxy.Credentials = new NetworkCredential(config.Proxy_Username, config.Proxy_Pass);
-		//    }
-
-		//    请求.Proxy = myProxy;
-		//}
-
-		//Console.WriteLine("\nThe Address of the  new Proxy settings are {0}",myProxy.Address);
+namespace XiaoNei
+{
+    /// <summary>
+    /// HttpProc 的摘要说明。
+    /// </summary>
+    public class HttpProc
+    {
+        /// <summary>
+        /// 创建请求
+        /// </summary>
+        /// <returns>请求对象</returns>
+        private HttpWebRequest CreateRequest()
+        {
+            var request = (HttpWebRequest) WebRequest.Create(StrUrl);
+            request.Accept = "*/*"; //接受任意文件
+            request.UserAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.1.4322)"; // 模拟使用IE在浏览
+            //请求.AllowAutoRedirect = false;//这里不允许302
+            request.CookieContainer = new CookieContainer(); //cookie容器，
+            request.Referer = StrRefUrl; //当前页面的引用
 
 
+            if (CookiePost != null)
+            {
+                var u = new Uri(StrUrl);
+                //doenet处理cookie的bug：请求的服务器和cookie的Host必须一直，否则不发送或获取！
+                //这里修改成一致！
+                foreach (Cookie c in CookiePost)
+                {
+                    c.Domain = u.Host;
+                }
+                request.CookieContainer.Add(CookiePost);
+            }
+            //如果需要发送数据，就以Post方式发送
+            if (!string.IsNullOrEmpty(StrPostdata))
+            {
+                request.ContentType = "application/x-www-form-urlencoded"; //作为表单请求
+                request.Method = "POST"; //方式就是Post
+
+                //发送http数据：朝请求流中写post的数据
+                byte[] b = _encoding.GetBytes(StrPostdata);
+                request.ContentLength = b.Length;
+                Stream sw = null;
+                try
+                {
+                    sw = request.GetRequestStream();
+                    sw.Write(b, 0, b.Length);
+                }
+                catch (Exception ex)
+                {
+                    StrErr = ex.Message;
+                }
+                finally
+                {
+                    if (sw != null)
+                    {
+                        sw.Close();
+                    }
+                }
+            }
+            return request; //返回创建的请求对象
+        }
+
+        /// <summary>
+        /// 处理请求
+        /// </summary>
+        /// <returns>返回当前处理的文本</returns>
+        public string Proc()
+        {
+            HttpWebRequest request = CreateRequest(); //请求
+            HttpWebResponse response;
 
 
-		//如果附带cookie 就发送
-		if (this._cookiePost != null) {
-			System.Uri u = new Uri(_strUrl);
-			//doenet处理cookie的bug：请求的服务器和cookie的Host必须一直，否则不发送或获取！
-
-			//这里修改成一致！
-			foreach (System.Net.Cookie c in _cookiePost) {
-				c.Domain = u.Host;
-			}
-
-			请求.CookieContainer.Add(_cookiePost);
-		}
-
-		//如果需要发送数据，就以Post方式发送
-		if (_strPostdata != null && _strPostdata.Length > 0) {
-			请求.ContentType = "application/x-www-form-urlencoded";//作为表单请求
-			请求.Method = "POST";//方式就是Post
-
-			//发送http数据：朝请求流中写post的数据
-			byte[] b = this._encoding.GetBytes(this._strPostdata);
-			请求.ContentLength = b.Length;
-			System.IO.Stream sw = null;
-			try {
-				sw = 请求.GetRequestStream();
-				sw.Write(b, 0, b.Length);
-			} catch (System.Exception ex) {
-				this._strErr = ex.Message;
-			} finally {
-				if (sw != null) { sw.Close(); }
-			}
-
-		}
-		return 请求; //返回创建的请求对象
-
-	}
-
-	/// <summary>
-	/// 处理请求
-	/// </summary>
-	/// <returns>返回当前处理的文本</returns>
-	public string Proc() {
-
-		HttpWebRequest 请求 = CreateRequest();//请求
-		HttpWebResponse 响应 = null; ;
-
-		System.IO.StreamReader sr = null;
+            StreamReader sr = null;
+            try
+            {
+                //这里得到响应
 
 
-		try {
-			//这里得到响应
+                response = (HttpWebResponse) request.GetResponse();
 
-	
-			响应 = (HttpWebResponse)请求.GetResponse();
+                sr = new StreamReader(response.GetResponseStream(), Encoding);
 
-			sr = new System.IO.StreamReader(响应.GetResponseStream(), this.encoding);
+                ResHtml = sr.ReadToEnd(); // 这里假定响应的都是html文本
+            }
+            catch (WebException e)
+            {
+                if (e.Status == WebExceptionStatus.ProtocolError)
+                {
+                    response = (HttpWebResponse) e.Response;
+                    sr = new StreamReader(response.GetResponseStream(), Encoding);
 
-			this._ResHtml = sr.ReadToEnd(); // 这里假定响应的都是html文本
-		} catch (WebException e) {
-			  if(e.Status   ==   WebExceptionStatus.ProtocolError)   {
-				  响应 =(HttpWebResponse)e.Response;
-				  sr = new System.IO.StreamReader(响应.GetResponseStream(), this.encoding);
+                    ResHtml = sr.ReadToEnd();
+                }
+                else return "";
+            }
+            finally
+            {
+                if (sr != null)
+                {
+                    sr.Close();
+                }
+            }
+            //状态码
+            StrCode = response.StatusCode.ToString();
 
-				  this._ResHtml = sr.ReadToEnd(); 
+            if (StrCode == "302") //如果是302重定向的话就返回新的地址。
+            {
+                ResHtml = response.Headers["location"];
+            }
 
-			  }else return "";
-		} finally {
-			if (sr != null) { sr.Close(); }
-		}
-		//状态码
-		this._strCode = 响应.StatusCode.ToString();
-
-		if (this._strCode == "302") //如果是302重定向的话就返回新的地址。
-                        {
-			this._ResHtml = 响应.Headers["location"];
-		}
-
-		//得到cookie
-		if (响应.Cookies.Count > 0) {
-			this._cookieGet = (响应.Cookies); //得到新的cookie：注意这里没考虑cookie合并的情况
-		}
-		return this.ResHtml;
-	}
-
-
-	#region 构造函数
-	public HttpProc() {
-	}
-
-	/// <summary>
-	/// 构造函数
-	/// </summary>
-	/// <param name="地址">发送的地址</param>
-	/// <param name="要发送的cookie">要发送cookies集合</param>
-	public HttpProc(string 地址, System.Net.CookieCollection 要发送的cookie) {
-		this._strUrl = 地址;
-		this._cookiePost = 要发送的cookie;
-	}
-
-	/// <summary>
-	/// 构造函数
-	/// </summary>
-	/// <param name="地址">发送的地址</param>
-	/// <param name="发送数据">要发送的数据</param>
-	public HttpProc(string 地址, string 发送数据) {
-		this._strUrl = 地址;
-		this._strPostdata = 发送数据;
-
-	}
+            //得到cookie
+            if (response.Cookies.Count > 0)
+            {
+                _cookieGet = (response.Cookies); //得到新的cookie：注意这里没考虑cookie合并的情况
+            }
+            return ResHtml;
+        }
 
 
-	/// <summary>
-	/// 构造函数
-	/// </summary>
-	/// <param name="地址">发送的地址</param>
-	public HttpProc(string 地址) {
-		this._strUrl = 地址;
-	}
+        public HttpProc()
+        {
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="url">发送的地址</param>
+        /// <param name="postCookie">要发送cookies集合</param>
+        public HttpProc(string url, CookieCollection postCookie)
+        {
+            StrUrl = url;
+            CookiePost = postCookie;
+        }
+
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="url">发送的地址</param>
+        /// <param name="postData">要发送的数据</param>
+        public HttpProc(string url, string postData)
+        {
+            StrUrl = url;
+            StrPostdata = postData;
+        }
 
 
-	/// <summary>
-	/// 构造函数
-	/// </summary>
-	/// <param name="地址">发送的地址</param>
-	/// <param name="发送数据">要发送的数据</param>
-	/// <param name="要发送的cookie">要发送cookies集合</param>
-	public HttpProc(string 地址, string 发送数据, System.Net.CookieCollection 要发送的cookie) {
-		this._strUrl = 地址;
-		this._strPostdata = 发送数据;
-		this._cookiePost = 要发送的cookie;
-	}
-	#endregion
-
-	#region 地址
-	private string _strUrl;
-	/// <summary>
-	/// 请求http的地址
-	/// </summary>
-	public string strUrl {
-		get {
-			return _strUrl;
-		}
-		set {
-			_strUrl = value;
-		}
-	}
-	#endregion
-
-	#region 来源地址
-	private string _strRefUrl;
-	/// <summary>
-	/// 当前页面的引用地址
-	/// </summary>
-	public string strRefUrl {
-		get {
-			return _strRefUrl;
-		}
-		set {
-			_strRefUrl = value;
-		}
-	}
-	#endregion
-
-	#region 数据
-	private string _strPostdata;
-	/// <summary>
-	/// 发送出去的数据
-	/// </summary>
-	public string strPostdata {
-		get { return this._strPostdata; }
-		set { this._strPostdata = value; }
-	}
-	#endregion
-
-	#region 要发送的cookie集合
-	private System.Net.CookieCollection _cookiePost;
-	/// <summary>
-	/// 发送的cookie集合
-	/// </summary>
-	public System.Net.CookieCollection cookiePost {
-		get {
-			return _cookiePost;
-		}
-		set { _cookiePost = value; }
-	}
-	#endregion
-
-	#region 获取的cookie集合
-	private System.Net.CookieCollection _cookieGet = new CookieCollection();
-	/// <summary>
-	/// 发送的cookie集合
-	/// </summary>
-	public System.Net.CookieCollection cookieGet {
-		get {
-			return _cookieGet;
-		}
-		//set {
-		//    _cookieGet = value;
-		//}
-	}
-	#endregion
-
-	#region 代理
-
-	private System.Net.IWebProxy _Proxy;
-	/// <summary>
-	/// 代理服务器
-	/// </summary>
-	public System.Net.IWebProxy Proxy {
-		get { return this._Proxy; }
-		set { this._Proxy = value; }
-	}
-	#endregion
-
-	#region 是否发送成功
-	private bool _succeed;
-	/// <summary>
-	/// 是否执行成功
-	/// </summary>
-	public bool succeed {
-		get { return _succeed; }
-		set { _succeed = value; }
-	}
-	#endregion
-
-	#region 响应的html结果
-	private string _ResHtml;
-	/// <summary>
-	/// 返回的html结果，以文本方式
-	/// </summary>
-	public string ResHtml {
-		get {
-
-			return _ResHtml;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="url">发送的地址</param>
+        public HttpProc(string url)
+        {
+            StrUrl = url;
+        }
 
 
-		}
-	}
-	#endregion
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="url">发送的地址</param>
+        /// <param name="postData">要发送的数据</param>
+        /// <param name="postCookie">要发送cookies集合</param>
+        public HttpProc(string url, string postData, CookieCollection postCookie)
+        {
+            StrUrl = url;
+            StrPostdata = postData;
+            CookiePost = postCookie;
+        }
 
-	#region 响应码
-	private string _strCode;
-	/// <summary>
-	/// 响应代码
-	/// </summary>
-	public string strCode {
-		get { return _strCode; }
-		set { _strCode = value; }
-	}
-	#endregion
+        /// <summary>
+        /// 请求http的地址
+        /// </summary>
+        public string StrUrl { get; set; }
 
-	#region 错误文本
-	private string _strErr;
-	/// <summary>
-	/// 错误文本
-	/// </summary>
-	public string strErr {
-		get { return _strErr; }
-		set { _strErr = value; }
-	}
-	#endregion
+        /// <summary>
+        /// 当前页面的引用地址
+        /// </summary>
+        public string StrRefUrl { get; set; }
 
-	#region 编码
-	private System.Text.Encoding _encoding = System.Text.Encoding.Default;
-	public System.Text.Encoding encoding {
-		get { return _encoding; }
-		set { _encoding = value; }
-	}
-	#endregion
+        /// <summary>
+        /// 发送出去的数据
+        /// </summary>
+        public string StrPostdata { get; set; }
 
+        /// <summary>
+        /// 发送的cookie集合
+        /// </summary>
+        public CookieCollection CookiePost { get; set; }
+
+        private CookieCollection _cookieGet = new CookieCollection();
+
+        /// <summary>
+        /// 发送的cookie集合
+        /// </summary>
+        public CookieCollection CookieGet
+        {
+            get { return _cookieGet; }
+            //set {
+            //    _cookieGet = value;
+            //}
+        }
+
+        /// <summary>
+        /// 代理服务器
+        /// </summary>
+        public IWebProxy Proxy { get; set; }
+
+        /// <summary>
+        /// 是否执行成功
+        /// </summary>
+        public bool Succeed { get; set; }
+
+        /// <summary>
+        /// 返回的html结果，以文本方式
+        /// </summary>
+        public string ResHtml { get; private set; }
+
+
+        /// <summary>
+        /// 响应代码
+        /// </summary>
+        public string StrCode { get; set; }
+
+        /// <summary>
+        /// 错误文本
+        /// </summary>
+        public string StrErr { get; set; }
+
+        private Encoding _encoding = Encoding.Default;
+
+        public Encoding Encoding
+        {
+            get { return _encoding; }
+            set { _encoding = value; }
+        }
+    }
 }
-

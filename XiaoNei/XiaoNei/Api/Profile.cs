@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-using System.Text;
-using XiaoNei.ApiContainer.Profile;
-using System.Web;
+﻿using XiaoNei.ApiContainer.Profile;
 
 namespace XiaoNei.Api {
 	public class Profile  : ApiBase {
@@ -13,16 +8,11 @@ namespace XiaoNei.Api {
 		    dict.Add("uid", uid);
 			return Api.Proc<GetXNML>(dict).Val;
 		}
-		public int SetXNML(string uid, string profile, string profileAction, string format) {
-
-			string xml = Api.Proc("xiaonei.profile.setXNML"
-				, string.Format("uid={0}&profile={1}&profile_action={2}", uid.Trim()
-								,HttpContext.Current.Server.UrlEncode(profile)
-								, HttpContext.Current.Server.UrlEncode(profileAction)
-								)
-				, format
-				);
-			return Api.Proc<SetXNML>(xml).Val;
+		public int SetXNML(string uid, string profile, string format) {
+		    var dict = CreateDictionary("xiaonei.profile.setXNML", true);
+		    dict.Add("uid", uid);
+            dict.Add("profile", profile);
+			return Api.Proc<SetXNML>(dict).Val;
 		}
 	}
 }

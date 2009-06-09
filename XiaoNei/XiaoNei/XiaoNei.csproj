@@ -52,7 +52,11 @@
     <Compile Include="ApiContainer\Friends\GetAppFriendsContainer.cs" />
     <Compile Include="ApiContainer\Invitations\GetUserOsInviteCntContainer.cs" />
     <Compile Include="ApiContainer\Notifications\SendEmailContainer.cs" />
+    <Compile Include="ApiContainer\Pay\PayIsCompleteContainer.cs" />
+    <Compile Include="ApiContainer\Pay\PayRegOrderContainer.cs" />
+    <Compile Include="ApiContainer\Users\HasAppPermissionContainer.cs" />
     <Compile Include="Api\Admin.cs" />
+    <Compile Include="Api\Pay.cs" />
     <Compile Include="Core\BytesExtension.cs" />
     <Compile Include="Core\DESEntension.cs" />
     <Compile Include="Core\DictionaryExtension.cs" />
@@ -60,6 +64,7 @@
     <Compile Include="Core\Md5Extension.cs" />
     <Compile Include="Core\SHA1Extension.cs" />
     <Compile Include="Core\StringToBytesExtension.cs" />
+    <Compile Include="Encode\HtmlEncodeExtension.cs" />
     <Compile Include="Exception\ResponseException.cs" />
     <Compile Include="IXiaoNeiHandler.cs" />
     <Compile Include="Model\FormatType.cs" />
@@ -74,9 +79,9 @@
     <Compile Include="ApiContainer\Friends\GetAppUsersContainer.cs" />
     <Compile Include="ApiContainer\Invitations\GetOsInfoContainer.cs" />
     <Compile Include="ApiContainer\Notifications\SendContainer.cs" />
-    <Compile Include="ApiContainer\Users\IsAppAdded.cs" />
+    <Compile Include="ApiContainer\Users\IsAppAddedContainer.cs" />
     <Compile Include="ApiContainer\Users\UserContainer.cs" />
-    <Compile Include="ApiContainer\Users\LoggedInUser.cs" />
+    <Compile Include="ApiContainer\Users\LoggedInUserContainer.cs" />
     <Compile Include="ApiContainer\Profile\GetXNML.cs" />
     <Compile Include="ApiContainer\Profile\SetXNML.cs" />
     <Compile Include="Model\Friend.cs" />
