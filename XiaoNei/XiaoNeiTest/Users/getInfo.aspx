@@ -14,8 +14,8 @@
 	name,sex,birthday,tinyurl,headurl,mainurl,hometown_location,work_history,university_history,hs_history,contact_info,books,movies,music
 	<br />
 	format:<asp:DropDownList ID="DropDownList1" runat="server">
-		<asp:ListItem>XML</asp:ListItem>
-		<asp:ListItem>JSON</asp:ListItem>
+		<asp:ListItem>Xml</asp:ListItem>
+		<asp:ListItem>Json</asp:ListItem>
 	</asp:DropDownList>
 	<br />
 	<asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="读取" />

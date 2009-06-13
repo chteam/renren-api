@@ -7,9 +7,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	toids:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 	<br />
-	notification:<asp:TextBox ID="TextBox2" runat="server">
-	
-	hello,<xn:name uid="200032219" linked=s"true"/> ，去看看这部电影<a href="http://www.tudou.com/programs/view/Tzpw9PIj8zM/">狮子王</a>
+	notification:<br />
+    <asp:TextBox ID="TextBox2" runat="server" TextMode=MultiLine Height="139px" 
+        Width="331px">hello,<xn:name uid="200032219" linked="true"/> ，去看看这部电影<a href="http://www.tudou.com/programs/view/Tzpw9PIj8zM/">狮子王</a>hello,&lt;xn:name uid=&quot;200032219&quot; linked=s&quot;true&quot;/&gt; ，去看看这部电影&lt;a href=&quot;http://www.tudou.com/programs/view/Tzpw9PIj8zM/&quot;&gt;狮子王&lt;/a&gt;
 	</asp:TextBox>
 	<br />
 	<br />

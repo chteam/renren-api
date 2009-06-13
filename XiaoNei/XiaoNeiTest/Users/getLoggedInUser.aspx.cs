@@ -10,6 +10,6 @@ public partial class Users_getLoggedInUser :XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-		Literal1.Text = Api.Users.GetLoggedInUser();
+		Literal1.Text = Api.Users.GetLoggedInUser().ToString();
 	}
 }

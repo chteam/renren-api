@@ -9,7 +9,8 @@ public partial class Notifications_send : XPage {
 	protected void Page_Load(object sender, EventArgs e) {
 
 	}
-	protected void Button1_Click(object sender, EventArgs e) {
-		Api.Notifications.Send(TextBox1.Text, TextBox2.Text);
-	}
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Api.Notifications.Send(TextBox2.Text, TextBox1.Text);
+    }
 }

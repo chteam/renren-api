@@ -10,6 +10,6 @@ public partial class Profile_setXNML : XPage {
 
 	}
 	protected void Button1_Click(object sender, EventArgs e) {
-	Literal1.Text=	Api.Profile.SetXNML(TextBox3.Text, TextBox1.Text, TextBox2.Text, "XML").ToString();
+	Literal1.Text=	Api.Profile.SetXNML(TextBox3.Text, TextBox1.Text,  "XML".ToFormatType()).ToString();
 	}
 }
