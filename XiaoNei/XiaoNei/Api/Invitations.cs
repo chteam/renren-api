@@ -25,7 +25,7 @@ namespace XiaoNei.Api {
          */
      
         public List<InvitationInfo> GetOsInfo(string inviteIds, string format) {
-            var dict = CreateDictionary("xiaonei.invitations.getOsInfo");
+            var dict = CreateDictionary("xiaonei.invitations.getOsInfo",true);
             dict.Add("invite_ids", inviteIds);
             return Api.Proc<GetOsInfoContainer>(dict).InvitationInfos;
 		}

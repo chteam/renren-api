@@ -20,11 +20,11 @@ namespace XiaoNei {
 				var xr = XmlReader.Create(new StringReader(str));
 				//xr.NamespaceURI = "http://api.xiaonei.com/1.0/";
 				return (T)(ms.Deserialize(xr));
-			} catch {
+			} catch(Exception e) {
 				if (api.Handler.IsDebug)
                     throw new ResponseException(str);
 				else
-					throw new ResponseException("错误的响应值");
+					throw e;
 			}
 		}
         static public T Proc<T>(this XiaoNeiApi api,IDictionary<string,string> dict)

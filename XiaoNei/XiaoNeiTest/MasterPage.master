@@ -17,28 +17,28 @@
         </asp:ContentPlaceHolder>
     </div>
         <div style="width:30%;float:left">
-        
-    		<a href="/Users/getInfo.aspx?<%=this.Api.QueryData %>">Users.getInfo</a><br />
- <a href="/Users/getLoggedInUser.aspx?<%=this.Api.QueryData %>">Users.getLoggedInUser</a><br />
-			<a href="/Users/isAppAdded.aspx?<%=this.Api.QueryData %>">Users.isAppAdded</a><br />
+            <a href="Default.aspx">Default.aspx</a><br />
+    		<a href="/Users/getInfo.aspx?<%=QueryData %>">Users.getInfo</a><br />
+ <a href="/Users/getLoggedInUser.aspx?<%=QueryData %>">Users.getLoggedInUser</a><br />
+			<a href="/Users/isAppAdded.aspx?<%=QueryData %>">Users.isAppAdded</a><br />
 			<hr />
-			<a href="/Profile/getXNML.aspx?<%=this.Api.QueryData %>">Profile.getXNML</a><br />
-			<a href="/Profile/setXNML.aspx?<%=this.Api.QueryData %>">Profile.setXNML</a><br />
+			<a href="/Profile/getXNML.aspx?<%=QueryData %>">Profile.getXNML</a><br />
+			<a href="/Profile/setXNML.aspx?<%=QueryData %>">Profile.setXNML</a><br />
 			<hr />
-			<a href="/Friends/get.aspx?<%=this.Api.QueryData %>">Friends.get</a><br />
-			<a href="/Friends/getFriends.aspx?<%=this.Api.QueryData %>">Friends.getFriends</a><br />
-			<a href="/Friends/areFriends.aspx?<%=this.Api.QueryData %>">Friends.areFriends</a><br />
-			<a href="/Friends/getAppUsers.aspx?<%=this.Api.QueryData %>">Friends.getAppUsers</a><br />
+			<a href="/Friends/get.aspx?<%=QueryData %>">Friends.get</a><br />
+			<a href="/Friends/getFriends.aspx?<%=QueryData %>">Friends.getFriends</a><br />
+			<a href="/Friends/areFriends.aspx?<%=QueryData %>">Friends.areFriends</a><br />
+			<a href="/Friends/getAppUsers.aspx?<%=QueryData %>">Friends.getAppUsers</a><br />
 			<hr />
-			<a href="/Feed/publishTemplatizedAction.aspx?<%=this.Api.QueryData %>">Feed.publishTemplatizedAction
+			<a href="/Feed/publishTemplatizedAction.aspx?<%=QueryData %>">Feed.publishTemplatizedAction
 			</a>
 			<br />
-			<a href="/Notifications/send.aspx?<%=this.Api.QueryData %>">Notifications.send</a>
+			<a href="/Notifications/send.aspx?<%=QueryData %>">Notifications.send</a>
 			
 			<br />
 			<hr />
 			<a
-				href="/Invitations/getOsInfo.aspx?<%=this.Api.QueryData %>">Invitations.getOsInfo</a>
+				href="/Invitations/getOsInfo.aspx?<%=QueryData %>">Invitations.getOsInfo</a>
 			</div>
     </form>
 </body>

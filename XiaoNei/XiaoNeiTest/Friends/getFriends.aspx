@@ -10,7 +10,7 @@
 	<% 
 		if(fs!=null)
 		foreach ( XiaoNei.Friend x in this.fs) { %>
-	<li><%=x.ID %>-<%=x.Name %>-<img src="<%=x.HeadUrl %>" /></li>
+	<li><%=x.Id %>-<%=x.Name %>-<img src="<%=x.HeadUrl %>" /></li>
 	<%} %>
 	</ol>
 </asp:Content>

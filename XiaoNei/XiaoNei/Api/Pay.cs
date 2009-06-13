@@ -28,6 +28,11 @@ namespace XiaoNei.Api
             
             return Api.Proc<PayRegOrderContainer>(dict).Token;
         }
+        public string RegOrder(long orderId,int amount,string desc)
+        {
+            return RegOrder(orderId, amount, desc, FormatType.Xml);
+        }
+
         /*
          *  	xiaonei.pay.isCompleted
          Pay.isCompleted
@@ -38,6 +43,10 @@ namespace XiaoNei.Api
             var dict = CreateDictionary(Api.CanPay ? "xiaonei.pay.isCompleted" : "xiaonei.pay4Test.isCompleted", true);
             dict.Add("order_id", orderId.ToString());
             return Api.Proc<PayIsCompleteContainer>(dict).Result;
+        }
+        public bool IsCompleted(long orderId)
+        {
+            return IsCompleted(orderId, FormatType.Xml);
         }
     }
 }

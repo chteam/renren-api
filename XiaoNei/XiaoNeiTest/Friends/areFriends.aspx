@@ -13,7 +13,7 @@
 	<% 
 		if(fis!=null)
 		foreach ( XiaoNei.FriendInfo x in this.fis) { %>
-	<li><%=x.ID1 %>-<%=x.ID2 %>-<%=x.areFriends.ToString() %></li>
+	<li><%=x.Id1 %>-<%=x.Id2 %>-<%=x.AreFriends.ToString() %></li>
 	<%} %>
 	</ol>
 </asp:Content>

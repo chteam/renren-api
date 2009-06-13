@@ -50,7 +50,7 @@ namespace XiaoNei.Api {
         public long GetLoggedInUser(FormatType format)
 		{
 		    //if (Api.HttpContext.Session["xiaonei.users.uid"] == null) {
-		    var dict = CreateDictionary("xiaonei.users.uid", true);
+            var dict = CreateDictionary("xiaonei.users.getLoggedInUser", true);
 
 		    return  Api.Proc<LoggedInUserContainer>(dict).UserId;
 		    //	}

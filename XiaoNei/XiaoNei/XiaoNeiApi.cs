@@ -3,6 +3,7 @@ using System.Text;
 using System.Web;
 using XiaoNei.Api;
 using System.Collections.Generic;
+using XiaoNei.ApiContainer;
 
 namespace XiaoNei
 {
@@ -52,8 +53,10 @@ namespace XiaoNei
             }
             if (Cache[param].Contains("error_response"))
             {
+                var message = Cache[param];
                 Cache.Remove(param);
-                throw new ResponseException("Api调用返回错误");
+                var error = this.Load<ErrorContainer>(message);
+                throw new ResponseException(error.Message);
             }
             return Cache[param];
         }
@@ -130,6 +133,16 @@ namespace XiaoNei
                 if (_admin == null)
                     _admin = new Admin(this);
                 return _admin;
+            }
+        }
+        Pay _pay;
+        public Pay Pay
+        {
+            get
+            {
+                if (_pay == null)
+                    _pay = new Pay(this);
+                return _pay;
             }
         }
         #endregion
