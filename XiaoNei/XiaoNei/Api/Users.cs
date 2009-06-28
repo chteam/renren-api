@@ -1,5 +1,5 @@
 ﻿using XiaoNei.ApiContainer;
-
+using System.Linq;
 namespace XiaoNei.Api {
 	public class Users : ApiBase {
 		public Users(XiaoNeiApi api) : base(api) { }
@@ -11,34 +11,38 @@ namespace XiaoNei.Api {
         /// <summary>
 		/// 得到用户信息，当对方设置了隐私权限，只能返回 name、sex、headurl等数据
 		/// </summary>
-		public UserContainer GetInfo(string uid, string fields, FormatType format) {
+		public User[] GetInfo(string uids, string fields, FormatType format) {
             var dict = CreateDictionary("xiaonei.users.getInfo", true);
-            dict.Add("uids", uid);
+            dict.Add("uids", uids);
             dict.Add("fields", fields);
-			return Api.Proc<UserContainer>(dict);
+			return Api.Proc<UserContainer>(dict).Users;
 		}
-        public UserContainer GetInfo(string[] uid, string[] fields, FormatType format)
+        public User[] GetInfo(long[] uid, string[] fields, FormatType format)
         {
-			return GetInfo(string.Join(",", uid), string.Join(",", fields), format);
+            return GetInfo(string.Join(",", uid.Select(c => c.ToString()).ToArray()), string.Join(",", fields), format);
 		}
-		public UserContainer GetInfo(string[] uid, string[] fields) {
-			return GetInfo(string.Join(",", uid), string.Join(",", fields));
-		}
-		public UserContainer GetInfo(string  uid, string  fields) {
-			return GetInfo(uid, fields,  FormatType.Xml);
-		}
-        public UserContainer GetInfo(string uid,bool getAll)
+        public User[] GetInfo(long[] uids, string[] fields)
         {
-            return GetInfo(uid,
+			return GetInfo(string.Join(",", uids.Select(c=>c.ToString()).ToArray()), string.Join(",", fields));
+		}
+        public User[] GetInfo(string uids, string fields)
+        {
+			return GetInfo(uids, fields,  FormatType.Xml);
+		}
+        public User[] GetInfo(string uids, bool getAll)
+        {
+            return GetInfo(uids,
                            getAll
                                ? "name,sex,birthday,tinyurl,headurl,mainurl,hometown_location,work_history,university_history,hs_history,contact_info,books,movies,music"
                                : "");
         }
-		public UserContainer GetInfo(string uid) {
-		    return GetInfo(uid, false);
+        public User[] GetInfo(long uid)
+        {
+		    return GetInfo(uid.ToString(), false);
 		}
-		public UserContainer GetInfo(string[] uid) {
-			return GetInfo(string.Join(",", uid));
+        public User[] GetInfo(params long[] uids)
+        {
+			return GetInfo(string.Join(",", uids.Select(c=>c.ToString()).ToArray()),false);
 		}
 		#endregion
 

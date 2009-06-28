@@ -10,8 +10,8 @@ namespace XiaoNei {
 		public string UserId{get;set;}
 		[XmlElement("name")]
 		public string Name { get; set; }
-		[XmlElement("sex")]
-		public SexType Sex { set; get; }
+        [XmlElement("sex", typeof(int))]
+		public int Sex { set; get; }
 		[XmlElement("birthday")]
 		public DateTime Birthday { get; set; }
 		[XmlElement("tinyurl")]
