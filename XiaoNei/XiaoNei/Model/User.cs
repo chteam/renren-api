@@ -6,8 +6,8 @@ using System.Xml.Serialization;
 namespace XiaoNei {
 	[XmlRoot("user")]
 	public class User {
-		[XmlElement("uid")]
-		public string UserId{get;set;}
+        [XmlElement("uid", typeof(long))]
+		public long UserId{get;set;}
 		[XmlElement("name")]
 		public string Name { get; set; }
         [XmlElement("sex", typeof(int))]

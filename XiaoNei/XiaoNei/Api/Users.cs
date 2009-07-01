@@ -36,9 +36,9 @@ namespace XiaoNei.Api {
                                ? "name,sex,birthday,tinyurl,headurl,mainurl,hometown_location,work_history,university_history,hs_history,contact_info,books,movies,music"
                                : "");
         }
-        public User[] GetInfo(long uid)
+        public User GetInfo(long uid)
         {
-		    return GetInfo(uid.ToString(), false);
+		    return GetInfo(uid.ToString(), false).FirstOrDefault();
 		}
         public User[] GetInfo(params long[] uids)
         {

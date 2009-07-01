@@ -72,7 +72,10 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
         {
             return GetFriends(page, null, FormatType.Xml);
         }
-
+        public List<Friend> GetFriends(int page,int pageSize)
+        {
+            return GetFriends(page, pageSize, FormatType.Xml);
+        }
 		#endregion
 		#region areFriends
         /*
