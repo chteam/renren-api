@@ -51,6 +51,7 @@
     <Compile Include="ApiContainer\Admin\AllocationContainer.cs" />
     <Compile Include="ApiContainer\ErrorContainer.cs" />
     <Compile Include="ApiContainer\Friends\GetAppFriendsContainer.cs" />
+    <Compile Include="ApiContainer\Friends\GetAppFriendsContainer_2.cs" />
     <Compile Include="ApiContainer\Invitations\GetUserOsInviteCntContainer.cs" />
     <Compile Include="ApiContainer\Notifications\SendEmailContainer.cs" />
     <Compile Include="ApiContainer\Pay\PayIsCompleteContainer.cs" />
