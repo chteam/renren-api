@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using XiaoNei.ApiContainer;
+using XiaoNei.Model;
 
 
 namespace XiaoNei.Api {
@@ -147,13 +148,13 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
             return GetAppUsers(FormatType.Xml);
         }
 
-        public List<Friend> GetAppFriends(string fields, FormatType format)
+        public List<FriendWithUId> GetAppFriends(string fields, FormatType format)
         {
             var dict = CreateDictionary("xiaonei.friends.getAppFriends", true);
             dict.Add("fields", fields ?? "uid,name,tinyurl,headurl");
             return Api.Proc<GetAppFriendsContainer2>(dict).Friends;
         }
-        public List<Friend> GetAppFriends(string fields)
+        public List<FriendWithUId> GetAppFriends(string fields)
         {
             return GetAppFriends(fields,FormatType.Xml);
         }

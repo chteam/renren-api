@@ -70,6 +70,7 @@
     <Compile Include="Exception\ResponseException.cs" />
     <Compile Include="IXiaoNeiHandler.cs" />
     <Compile Include="Model\FormatType.cs" />
+    <Compile Include="Model\FriendWithUId.cs" />
     <Compile Include="Model\OsInviteCnt.cs" />
     <Compile Include="Model\SexType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
