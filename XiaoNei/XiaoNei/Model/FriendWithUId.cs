@@ -5,9 +5,10 @@ using System.Text;
 using System.Xml;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-namespace XiaoNei.Model
+
+namespace XiaoNei
 {
-   public  class FriendWithUId
+    public  class FriendWithUId
     {
 
         [XmlElement("uid", typeof(long))]
@@ -20,5 +21,4 @@ namespace XiaoNei.Model
         public string TinyUrl { get; set; }
 
     }
-
 }

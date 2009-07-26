@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using XiaoNei.ApiContainer;
-using XiaoNei.Model;
 
 
 namespace XiaoNei.Api {
