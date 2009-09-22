@@ -9,7 +9,7 @@ namespace XiaoNei
 {
     public class XiaoNeiApi
     {
-        //http://apps.xiaonei.com/iloveyourhome/?origin=903&
+        //http://apps.renren.com/iloveyourhome/?origin=903&
         //xn_sig_in_iframe=1
         //&xn_sig_method=get
         //&xn_sig_time=1244437143581
@@ -40,7 +40,7 @@ namespace XiaoNei
         public KeyValuePair<string, string> SessionKey { get; set; }
 
         public string Secret { get; set; }
-        const string ApiUrl = "http://api.xiaonei.com/restserver.do";
+        const string ApiUrl = "http://api.renren.com/restserver.do";
 
         IDictionary<string, string> Cache { get; set; }
         public string Proc(string param)
@@ -151,9 +151,9 @@ namespace XiaoNei
         public static XiaoNeiApi GetInstanceByHttpContext(IXiaoNeiHandler ih, HttpContextBase httpContext, string secret)
         {
             ih.IsDebug = false;
-            string sessionKey = httpContext.Request.QueryString["xn_sig_session_key"];
+            var sessionKey = httpContext.Request.QueryString["xn_sig_session_key"];
             sessionKey = httpContext.Server.UrlEncode(sessionKey);
-            string apiKey = httpContext.Request.QueryString["xn_sig_api_key"];
+            var apiKey = httpContext.Request.QueryString["xn_sig_api_key"];
             return new XiaoNeiApi(apiKey, secret, sessionKey, ih);
         }
 
