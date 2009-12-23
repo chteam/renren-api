@@ -21,11 +21,10 @@ namespace XiaoNei.Api
          */
         public string RegOrder(long orderId,int amount,string desc,FormatType format)
         {
-            var dict = CreateDictionary(Api.CanPay ? "xiaonei.pay.regOrder" : "xiaonei.pay4Test.regOrder", true);
+            var dict = CreateDictionary(Api.CanPay ? "pay.regOrder" : "pay4Test.regOrder", true);
             dict.Add("order_id", orderId.ToString());
             dict.Add("amount", amount.ToString());
             dict.Add("desc", desc);
-            
             return Api.Proc<PayRegOrderContainer>(dict).Token;
         }
         public string RegOrder(long orderId,int amount,string desc)
@@ -40,7 +39,7 @@ namespace XiaoNei.Api
          */
         public bool IsCompleted(long orderId, FormatType format)
         {
-            var dict = CreateDictionary(Api.CanPay ? "xiaonei.pay.isCompleted" : "xiaonei.pay4Test.isCompleted", true);
+            var dict = CreateDictionary(Api.CanPay ? "pay.isCompleted" : "pay4Test.isCompleted", true);
             dict.Add("order_id", orderId.ToString());
             return Api.Proc<PayIsCompleteContainer>(dict).Result;
         }

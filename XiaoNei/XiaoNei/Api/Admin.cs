@@ -20,7 +20,7 @@ namespace XiaoNei.Api
         /// <returns></returns>
         public AllocationContainer Allocation(FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.admin.getAllocation");
+            var dict = CreateDictionary("admin.getAllocation");
             //add format
             return Api.Proc<AllocationContainer>(dict);
         }

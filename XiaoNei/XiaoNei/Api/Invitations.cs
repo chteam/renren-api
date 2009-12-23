@@ -30,7 +30,7 @@ namespace XiaoNei.Api
 		/// <returns></returns>
 		public List<InvitationInfo> GetOsInfo(string inviteIds, string format)
 		{
-			var dict = CreateDictionary("xiaonei.invitations.getOsInfo", true);
+			var dict = CreateDictionary("invitations.getOsInfo", true);
 			dict.Add("invite_ids", inviteIds);
 			return Api.Proc<GetOsInfoContainer>(dict).InvitationInfos;
 		}
@@ -63,7 +63,7 @@ namespace XiaoNei.Api
 		/// <returns></returns>
 		public List<OsInviteCnt> GetUserOsInviteCnt(FormatType format)
 		{
-			var dict = CreateDictionary("xiaonei.invitations.getUserOsInviteCnt", true);
+			var dict = CreateDictionary("invitations.getUserOsInviteCnt", true);
 
 			return Api.Proc<GetUserOsInviteCntContainer>(dict).OsInviteCnts;
 		}

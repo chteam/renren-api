@@ -14,7 +14,7 @@ namespace XiaoNei.ApiContainer.Admin
     /// <requests_per_day>1000</requests_per_day> 
     /// </admin_getAllocation_response>
     /// </summary>
-    [XmlRoot("admin_getAllocation_response", Namespace = "http://api.xiaonei.com/1.0/")]
+    [XmlRoot("admin_getAllocation_response", Namespace = "http://api.renren.com/1.0/")]
     public class AllocationContainer
     {
         /// <summary>

@@ -35,7 +35,7 @@ namespace XiaoNei.Api
         /// <param name="format"></param>
         public void Send(string notification, string toIds, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.notifications.send", true);
+            var dict = CreateDictionary("notifications.send", true);
             dict.Add("to_ids", toIds);
             dict.Add("notification", notification);
             string result = Api.Proc(dict.ToQueryString(Api));
@@ -89,7 +89,7 @@ e.email发送数量符合应用配额。
      */
         public long[] SendEmail(int templateId, string recipients, string bodyData)
         {
-            var dict = CreateDictionary("xiaonei.notifications.sendemail", true);
+            var dict = CreateDictionary("notifications.sendemail", true);
             dict.Add("template_id", templateId.ToString());
             dict.Add("recipients", recipients);
             dict.Add("body_data", bodyData);

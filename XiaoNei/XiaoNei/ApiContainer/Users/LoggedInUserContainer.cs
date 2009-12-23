@@ -2,7 +2,7 @@
 
 namespace XiaoNei.ApiContainer
 {
-    [XmlRoot("users_getLoggedInUser_response", Namespace = "http://api.xiaonei.com/1.0/")]
+    [XmlRoot("users_getLoggedInUser_response", Namespace = "http://api.renren.com/1.0/")]
     public class LoggedInUserContainer {
         [XmlText(typeof(long))]
         public long UserId { get; set; }

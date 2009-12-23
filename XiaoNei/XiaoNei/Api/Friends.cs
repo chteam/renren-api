@@ -27,7 +27,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
 		/// <returns></returns>
         public int[] Get(int? page, int? pageSize, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.friends.get", true);
+            var dict = CreateDictionary("friends.get", true);
 
             dict.AddNullable("page", page);
             dict.AddNullable("count", pageSize);
@@ -56,7 +56,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
          */
         public List<Friend> GetFriends(int? page, int? pageSize, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.friends.getFriends", true);
+            var dict = CreateDictionary("friends.getFriends", true);
 
             dict.AddNullable("page", page);
             dict.AddNullable("count", pageSize);
@@ -99,7 +99,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
 /// <param name="userIds1"></param>
 /// <returns></returns>
 		public List<FriendInfo> AreFriends(string userIds1, string userIds2, FormatType format) {
-            var dict = CreateDictionary("xiaonei.friends.areFriends", true);
+            var dict = CreateDictionary("friends.areFriends", true);
             dict.Add("uids1", userIds1);
             dict.Add("uids2", userIds2);
             return Api.Proc<AreFriendsContainer>(dict).FriendInfos;
@@ -117,7 +117,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
          
          */
         public int[] GetAppUsers(FormatType format) {
-            var dict = CreateDictionary("xiaonei.friends.getAppUsers", true);
+            var dict = CreateDictionary("friends.getAppUsers", true);
             string xml = Api.Proc(dict.ToQueryString(Api));
 			return Api.Load<GetAppUsersContainer>(xml).UserIds;
 		}
@@ -138,7 +138,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
          */
         public int[] GetAppFriends(FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.friends.getAppFriends", true);
+            var dict = CreateDictionary("friends.getAppFriends", true);
             return Api.Proc<GetAppFriendsContainer>(dict).UserIds;
         }
 
@@ -149,7 +149,7 @@ optional 	format 	string 	Response的格式,XML或者JSON，缺省值为XML。
 
         public List<FriendWithUId> GetAppFriends(string fields, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.friends.getAppFriends", true);
+            var dict = CreateDictionary("friends.getAppFriends", true);
             dict.Add("fields", fields ?? "uid,name,tinyurl,headurl");
             return Api.Proc<GetAppFriendsContainer2>(dict).Friends;
         }

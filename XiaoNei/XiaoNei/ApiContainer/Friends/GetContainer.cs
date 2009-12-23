@@ -1,7 +1,7 @@
 ﻿using System.Xml.Serialization;
 
 namespace XiaoNei.ApiContainer {
-    [XmlRoot("notifications_sendEmail_response", Namespace = "http://api.xiaonei.com/1.0/")]
+    [XmlRoot("notifications_sendEmail_response", Namespace = "http://api.renren.com/1.0/")]
     public class SendEmailContainer
     {
 		[XmlElement("uid", typeof(long))]

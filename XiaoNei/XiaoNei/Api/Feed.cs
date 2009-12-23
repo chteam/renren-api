@@ -37,7 +37,7 @@ namespace XiaoNei.Api
         /// <returns></returns>
         public bool PublishTemplatizedAction(int templateId, string titleData, string bodyData, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.feed.publishTemplatizedAction",true);
+            var dict = CreateDictionary("feed.publishTemplatizedAction",true);
             dict.Add("template_id", templateId.ToString());
             dict.Add("title_data", titleData);
             dict.Add("body_data", bodyData);

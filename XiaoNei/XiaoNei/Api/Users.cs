@@ -12,7 +12,7 @@ namespace XiaoNei.Api {
 		/// 得到用户信息，当对方设置了隐私权限，只能返回 name、sex、headurl等数据
 		/// </summary>
 		public User[] GetInfo(string uids, string fields, FormatType format) {
-            var dict = CreateDictionary("xiaonei.users.getInfo", true);
+            var dict = CreateDictionary("users.getInfo", true);
             dict.Add("uids", uids);
             dict.Add("fields", fields);
 			return Api.Proc<UserContainer>(dict).Users;
@@ -53,12 +53,12 @@ namespace XiaoNei.Api {
 		/// <returns></returns>
         public long GetLoggedInUser(FormatType format)
 		{
-		    //if (Api.HttpContext.Session["xiaonei.users.uid"] == null) {
-            var dict = CreateDictionary("xiaonei.users.getLoggedInUser", true);
+		    //if (Api.HttpContext.Session["users.uid"] == null) {
+            var dict = CreateDictionary("users.getLoggedInUser", true);
 
 		    return  Api.Proc<LoggedInUserContainer>(dict).UserId;
 		    //	}
-		    //	return Api.HttpContext.Session["xiaonei.users.uid"].ToString();
+		    //	return Api.HttpContext.Session["users.uid"].ToString();
 		}
 
 	    /// <summary>
@@ -80,7 +80,7 @@ namespace XiaoNei.Api {
          */
         public bool HasAppPermission(string extPerm, long? uid,FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.users.hasAppPermission", true);
+            var dict = CreateDictionary("users.hasAppPermission", true);
             dict.Add("ext_perm", extPerm);
             dict.AddNullable("uid", uid);
 
@@ -103,7 +103,7 @@ namespace XiaoNei.Api {
 		/// <returns></returns>
         public bool IsAppAdded(string uid, FormatType format)
         {
-            var dict = CreateDictionary("xiaonei.users.isAppAdded", true);
+            var dict = CreateDictionary("users.isAppAdded", true);
             if (!string.IsNullOrEmpty(uid))
                 dict.Add("uid", uid);
 			return Api.Proc<IsAppAddedContainer>(dict).Val == 1;
