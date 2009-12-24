@@ -1,5 +1,4 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Web;
 using XiaoNei.Api;
 using System.Collections.Generic;
@@ -33,7 +32,7 @@ namespace XiaoNei
         }
       // public  HttpContextBase HttpContext { get; set; }
 
-        public bool CanPay = false;
+        public bool CanPay;
         public IXiaoNeiHandler Handler { get; set; }
         public KeyValuePair<string, string> Version { get; set; }
         public KeyValuePair<string, string> ApiKey { get; set; }
