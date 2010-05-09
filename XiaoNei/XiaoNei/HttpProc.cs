@@ -11,7 +11,7 @@ using System.Text;
 namespace XiaoNei
 {
     /// <summary>
-    /// HttpProc 的摘要说明。
+    /// HttpProc 的摘要说明。 
     /// </summary>
     public class HttpProc
     {
