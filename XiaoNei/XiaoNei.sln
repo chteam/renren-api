@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XiaoNei", "XiaoNei\XiaoNei.csproj", "{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7174D482-57B6-49A4-94DB-7C99F4608EDA}"
 	ProjectSection(SolutionItems) = preProject
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 		XiaoNei.vsmdi = XiaoNei.vsmdi
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XiaoNei", "XiaoNei\XiaoNei.csproj", "{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "XiaoNeiTest", "XiaoNeiTest", "{F482310A-1428-421B-B9C4-06A1A9B546B0}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -15,7 +15,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "XiaoNeiTest", "XiaoNeiTest"
 		SccAuxPath = "SAK"
 		SccLocalPath = "SAK"
 		SccProvider = "SAK"
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		ProjectReferences = "{76D9B044-08B4-4E01-99E5-6C5DFF4BE097}|XiaoNei.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/XiaoNeiTest"
 		Debug.AspNetCompiler.PhysicalPath = "XiaoNeiTest\"
