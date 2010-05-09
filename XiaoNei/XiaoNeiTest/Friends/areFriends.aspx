@@ -12,7 +12,7 @@
 			<ol>
 	<% 
 		if(fis!=null)
-		foreach ( XiaoNei.FriendInfo x in this.fis) { %>
+		foreach ( RenRen.FriendInfo x in this.fis) { %>
 	<li><%=x.Id1 %>-<%=x.Id2 %>-<%=x.AreFriends.ToString() %></li>
 	<%} %>
 	</ol>

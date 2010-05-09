@@ -9,7 +9,7 @@
 		<ol>
 	<% 
 		if(fs!=null)
-		foreach ( XiaoNei.Friend x in this.fs) { %>
+		foreach ( RenRen.Friend x in this.fs) { %>
 	<li><%=x.Id %>-<%=x.Name %>-<img src="<%=x.HeadUrl %>" /></li>
 	<%} %>
 	</ol>

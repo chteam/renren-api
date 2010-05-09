@@ -1,5 +1,5 @@
 using System;
-using XiaoNei;
+using RenRen;
 
 static public class FormatTypeExtension
 {

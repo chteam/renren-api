@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using XiaoNei;
+using RenRen;
 
 public partial class Friends_getFriends : XPage {
 	protected void Page_Load(object sender, EventArgs e) {

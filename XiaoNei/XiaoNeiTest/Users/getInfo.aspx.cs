@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using XiaoNei;
-using XiaoNei.ApiContainer;
+using RenRen;
+using RenRen.ApiContainer;
 
 public partial class Users_getInfo : XPage {
 	protected void Page_Load(object sender, EventArgs e) {
