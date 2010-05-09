@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	[XmlRoot("work_info")]
 	public class Work {
 		[XmlElement("company_name")]

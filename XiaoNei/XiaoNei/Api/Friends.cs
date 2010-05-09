@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using XiaoNei.ApiContainer;
+using RenRen.ApiContainer;
 
 
-namespace XiaoNei.Api {
+namespace RenRen.Api {
 	public class Friends: ApiBase {
-		public Friends(XiaoNeiApi api) : base(api) { }
+		public Friends(RenRenApi api) : base(api) { }
 		#region get
         /*
          * required  	

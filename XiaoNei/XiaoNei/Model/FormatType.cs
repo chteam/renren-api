@@ -1,4 +1,4 @@
-namespace XiaoNei
+namespace RenRen
 {
     public enum FormatType
     {

@@ -1,8 +1,8 @@
-﻿using XiaoNei.ApiContainer.Profile;
+﻿using RenRen.ApiContainer.Profile;
 
-namespace XiaoNei.Api {
+namespace RenRen.Api {
 	public class Profile  : ApiBase {
-		public Profile(XiaoNeiApi api) : base(api) { }
+		public Profile(RenRenApi api) : base(api) { }
 		public string GetXNML(string uid,FormatType format) {
 		    var dict = CreateDictionary("profile.getXNML", true);
 		    dict.Add("uid", uid);

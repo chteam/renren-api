@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	[XmlRoot("hs_info")]
 	public class HighSchool {
 		/// <summary>

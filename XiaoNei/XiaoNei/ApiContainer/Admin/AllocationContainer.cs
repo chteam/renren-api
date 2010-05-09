@@ -1,7 +1,7 @@
 using System;
 using System.Xml.Serialization;
 
-namespace XiaoNei.ApiContainer.Admin
+namespace RenRen.ApiContainer.Admin
 {
     /// <summary>
     /// <?xml version="1.0" encoding="UTF-8"?> 

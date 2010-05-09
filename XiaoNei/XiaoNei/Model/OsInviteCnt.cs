@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace XiaoNei
+namespace RenRen
 {
     public class OsInviteCnt
     {

@@ -1,8 +1,8 @@
-﻿using XiaoNei.ApiContainer;
+﻿using RenRen.ApiContainer;
 using System.Linq;
-namespace XiaoNei.Api {
+namespace RenRen.Api {
 	public class Users : ApiBase {
-		public Users(XiaoNeiApi api) : base(api) { }
+		public Users(RenRenApi api) : base(api) { }
 		#region getInfo
         /*
     uids  	string  	需要查询的用户的id。

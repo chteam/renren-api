@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 
 using System.Text;
-using XiaoNei.ApiContainer;
+using RenRen.ApiContainer;
 
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
 	public class Invitations : ApiBase
 	{
-		public Invitations(XiaoNeiApi api) : base(api) { }
+		public Invitations(RenRenApi api) : base(api) { }
 
 		#region getOsInfo
 		/// <summary>

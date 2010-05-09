@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using CHSNS;
-namespace XiaoNei
+namespace RenRen
 {
     static public class DictionaryExtension
     {
-        public static void AddSignature(this IDictionary<string, string> dict,XiaoNeiApi api)
+        public static void AddSignature(this IDictionary<string, string> dict,RenRenApi api)
         {
             if (dict.ContainsKey("sig")) dict.Remove("sig");
             var sb = dict.ToJoinString();
@@ -33,7 +33,7 @@ namespace XiaoNei
             }
             return sb;
         }
-        public static string ToQueryString(this IDictionary<string, string> dict,XiaoNeiApi api)
+        public static string ToQueryString(this IDictionary<string, string> dict,RenRenApi api)
         {
             dict.AddSignature(api);
             return dict.ToJoinString("&").ToString();

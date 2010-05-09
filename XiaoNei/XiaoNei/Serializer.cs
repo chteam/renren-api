@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	public static class Serializer {
 		/// <summary>
 		/// 从配置文件反序列化
@@ -13,7 +13,7 @@ namespace XiaoNei {
 		/// <param name="api"></param>
 		/// <param name="str">XML字符串</param>
 		/// <returns></returns>
-		static public T Load<T>(this XiaoNeiApi api, string str) {
+		static public T Load<T>(this RenRenApi api, string str) {
 				if (str.Contains("pay4Test_regOrder_response"))
 					str = str.Replace("pay4Test_regOrder_response", "pay_regOrder_response");
 			try {
@@ -28,12 +28,12 @@ namespace XiaoNei {
 				throw new Exception(str, e);
 			}
 		}
-        static public T Proc<T>(this XiaoNeiApi api,IDictionary<string,string> dict)
+        static public T Proc<T>(this RenRenApi api,IDictionary<string,string> dict)
         {
             var result = api.Proc(dict);
             return api.Load<T>(result);
         }
-		public static string Save<T>(this XiaoNeiApi api, T obj) {
+		public static string Save<T>(this RenRenApi api, T obj) {
 			var ms = new XmlSerializer(typeof(T), "http://api.renren.com/1.0/");
             using (var myWriter = new StringWriter())
             {

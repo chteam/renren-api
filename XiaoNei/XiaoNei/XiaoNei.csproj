@@ -87,7 +87,8 @@
     <Compile Include="Core\StringToBytesExtension.cs" />
     <Compile Include="Encode\HtmlEncodeExtension.cs" />
     <Compile Include="Exception\ResponseException.cs" />
-    <Compile Include="IXiaoNeiHandler.cs" />
+    <Compile Include="IRenRenHandler.cs" />
+    <Compile Include="MockRenRenHandler.cs" />
     <Compile Include="Model\FormatType.cs" />
     <Compile Include="Model\FriendWithUId.cs" />
     <Compile Include="Model\OsInviteCnt.cs" />
@@ -122,7 +123,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\Work.cs" />
     <Compile Include="Api\Users.cs" />
-    <Compile Include="XiaoNeiApi.cs" />
+    <Compile Include="RenRenApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

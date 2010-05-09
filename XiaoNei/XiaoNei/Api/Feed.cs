@@ -1,10 +1,10 @@
-﻿using XiaoNei.ApiContainer;
+﻿using RenRen.ApiContainer;
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
     public class Feed : ApiBase
     {
-        public Feed(XiaoNeiApi api) : base(api) { }
+        public Feed(RenRenApi api) : base(api) { }
         /*required  	
          * api_key  	string  	申请应用时分配的api_key，调用接口时候代表应用的唯一身份。
          * method 	string 	xiaonei.feed.publishTemplatizedAction

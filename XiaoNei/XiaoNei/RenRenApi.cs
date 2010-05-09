@@ -1,12 +1,12 @@
 ﻿using System.Text;
 using System.Web;
-using XiaoNei.Api;
+using RenRen.Api;
 using System.Collections.Generic;
-using XiaoNei.ApiContainer;
+using RenRen.ApiContainer;
 
-namespace XiaoNei
+namespace RenRen
 {
-    public class XiaoNeiApi
+    public class RenRenApi
     {
         //http://apps.renren.com/iloveyourhome/?origin=903&
         //xn_sig_in_iframe=1
@@ -19,7 +19,7 @@ namespace XiaoNei
         //&xn_sig_api_key=7b4862666bad4eccb1f9053048b23428
         //&xn_sig_app_id=31802
         //&xn_sig_in_iframe=1
-        public XiaoNeiApi(string apiKey, string secret, string sessionKey,IXiaoNeiHandler handler)
+        public RenRenApi(string apiKey, string secret, string sessionKey,IRenRenHandler handler)
         {
             //HttpContext = httpContext;
             Cache = new Dictionary<string, string>();
@@ -30,10 +30,14 @@ namespace XiaoNei
             Handler = handler;
             //PostData = string.Format("api_key={0}&session_key={1}&v={2}", ApiKey, Secret, Version);
         }
+        public RenRenApi(string apiKey, string secret, string sessionKey)
+            : this(apiKey, secret, sessionKey, new MockRenRenHandler())
+        {
+        }
       // public  HttpContextBase HttpContext { get; set; }
 
         public bool CanPay;
-        public IXiaoNeiHandler Handler { get; set; }
+        public IRenRenHandler Handler { get; set; }
         public KeyValuePair<string, string> Version { get; set; }
         public KeyValuePair<string, string> ApiKey { get; set; }
         public KeyValuePair<string, string> SessionKey { get; set; }
@@ -135,6 +139,9 @@ namespace XiaoNei
             }
         }
         Pay _pay;
+        private string apiKey;
+        private string sessionKey;
+        private MockRenRenHandler mockRenRenHandler;
         public Pay Pay
         {
             get
@@ -147,13 +154,13 @@ namespace XiaoNei
         #endregion
 
         #region Init
-        public static XiaoNeiApi GetInstanceByHttpContext(IXiaoNeiHandler ih, HttpContextBase httpContext, string secret)
+        public static RenRenApi GetInstanceByHttpContext(IRenRenHandler ih, HttpContextBase httpContext, string secret)
         {
             ih.IsDebug = false;
             var sessionKey = httpContext.Request.QueryString["xn_sig_session_key"];
             sessionKey = httpContext.Server.UrlEncode(sessionKey);
             var apiKey = httpContext.Request.QueryString["xn_sig_api_key"];
-            return new XiaoNeiApi(apiKey, secret, sessionKey, ih);
+            return new RenRenApi(apiKey, secret, sessionKey, ih);
         }
 
         #endregion

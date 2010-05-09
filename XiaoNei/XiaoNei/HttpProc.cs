@@ -8,7 +8,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace XiaoNei
+namespace RenRen
 {
     /// <summary>
     /// HttpProc 的摘要说明。 

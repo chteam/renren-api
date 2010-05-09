@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 using System.Text;
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
     public class ApiBase
     {
-        public ApiBase(XiaoNeiApi api)
+        public ApiBase(RenRenApi api)
         {
             Api = api;
         }
-        protected XiaoNeiApi Api { set; get; }
+        protected RenRenApi Api { set; get; }
 
         protected IDictionary<string, string> CreateDictionary(string method, bool hasSessionKey)
         {

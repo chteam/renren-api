@@ -1,7 +1,7 @@
 using System;
 using System.Net;
 
-namespace XiaoNei
+namespace RenRen
 {
     public class ResponseException : Exception
     {

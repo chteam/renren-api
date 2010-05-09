@@ -1,10 +1,10 @@
-using XiaoNei.ApiContainer;
+using RenRen.ApiContainer;
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
     public class Pay:ApiBase
     {
-        public Pay(XiaoNeiApi api) : base(api){}
+        public Pay(RenRenApi api) : base(api){}
 
         /*
          * xiaonei.pay.regOrder

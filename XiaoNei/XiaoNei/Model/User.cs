@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 
 
-namespace XiaoNei {
+namespace RenRen {
 	[XmlRoot("user")]
 	public class User {
         [XmlElement("uid", typeof(long))]

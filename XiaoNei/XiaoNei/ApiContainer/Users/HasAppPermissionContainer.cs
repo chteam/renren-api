@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace XiaoNei.ApiContainer
+namespace RenRen.ApiContainer
 {
     [XmlRoot("users_hasAppPermission_response", Namespace = "http://api.renren.com/1.0/")]
     public class HasAppPermissionContainer

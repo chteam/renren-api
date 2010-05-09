@@ -1,6 +1,6 @@
 using System.Xml.Serialization;
 
-namespace XiaoNei.ApiContainer
+namespace RenRen.ApiContainer
 {
     [XmlRoot("error_response",Namespace="")]
     public class ErrorContainer

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using XiaoNei.ApiContainer;
+using RenRen.ApiContainer;
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
     public class Notifications : ApiBase
     {
-        public Notifications(XiaoNeiApi api) : base(api) { }
+        public Notifications(RenRenApi api) : base(api) { }
         #region send
         /*
           	to_ids  	string  	用户id的列表，单个或多个，可以是逗号分隔，如 8055,8066,8077 。

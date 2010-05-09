@@ -1,10 +1,10 @@
-using XiaoNei.ApiContainer.Admin;
+using RenRen.ApiContainer.Admin;
 
-namespace XiaoNei.Api
+namespace RenRen.Api
 {
     public class Admin : ApiBase
     {
-        public Admin(XiaoNeiApi api) : base(api) { }
+        public Admin(RenRenApi api) : base(api) { }
 
         /// <summary>
         /// 获取一个应用当天可以发送的通知的配额

@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace XiaoNei
+namespace RenRen
 {
     [Serializable, StructLayout(LayoutKind.Sequential)]
     public class KeyValueItem

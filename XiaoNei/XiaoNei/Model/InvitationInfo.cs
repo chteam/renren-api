@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	
 	public class InvitationInfo {
 		/// <summary>

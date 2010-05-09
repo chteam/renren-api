@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	/// <summary>
 	/// 大学
 	/// </summary>

@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace XiaoNei {
+namespace RenRen {
 	public class Friend {
 		[XmlElement("id",typeof(long))]
 		public long Id { get; set; }
